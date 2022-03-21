@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/Settings.gd" type="Script" id=2]
+[ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/Tutorial.tscn" type="PackedScene" id=4]
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="settingsBG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -16.0
+margin_right = 32.0
+margin_bottom = 16.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 456.0
+margin_top = 32.0
+margin_right = 536.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 3 )
+text = "설정"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ok" type="Button" parent="."]
+margin_left = 888.0
+margin_top = 536.0
+margin_right = 992.0
+margin_bottom = 568.0
+theme = ExtResource( 1 )
+text = "OK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tutorialBtn" type="Button" parent="."]
+margin_left = 40.0
+margin_top = 536.0
+margin_right = 144.0
+margin_bottom = 574.0
+theme = ExtResource( 1 )
+text = "조작키"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 896.0
+margin_bottom = 512.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Menu"]
+margin_right = 768.0
+margin_bottom = 32.0
+text = "BGM 볼륨"
+
+[node name="MusicVolum" type="HSlider" parent="Menu"]
+margin_top = 36.0
+margin_right = 768.0
+margin_bottom = 52.0
+min_value = -80.0
+max_value = 6.0
+
+[node name="Label2" type="Label" parent="Menu"]
+margin_top = 56.0
+margin_right = 768.0
+margin_bottom = 88.0
+text = "효과음 볼륨"
+
+[node name="MusicVolum2" type="HSlider" parent="Menu"]
+margin_top = 92.0
+margin_right = 768.0
+margin_bottom = 108.0
+min_value = -80.0
+max_value = 6.0
+
+[node name="FullScreenBtn" type="CheckButton" parent="Menu"]
+margin_top = 112.0
+margin_right = 768.0
+margin_bottom = 150.0
+text = "전체 화면"
+flat = true
+
+[node name="Tutorial" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[connection signal="pressed" from="ok" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="tutorialBtn" to="." method="_on_tutorialBtn_pressed"]
+[connection signal="value_changed" from="Menu/MusicVolum" to="." method="_on_MusicVolum_value_changed"]
+[connection signal="value_changed" from="Menu/MusicVolum2" to="." method="_on_MusicVolum2_value_changed"]
+[connection signal="toggled" from="Menu/FullScreenBtn" to="." method="_on_FullScreenBtn_toggled"]

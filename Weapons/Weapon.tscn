@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://player/HitBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/Weapon.gd" type="Script" id=2]
+[ext_resource path="res://WhiteColor.shader" type="Shader" id=3]
+[ext_resource path="res://audio/attack/MP_Woosh.mp3" type="AudioStream" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/active = false
+
+[sub_resource type="Animation" id=2]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 0, -16 )
+rotation = -1.5708
+
+[node name="Sprite" type="Sprite" parent="Node2D"]
+material = SubResource( 1 )
+position = Vector2( 32, 16 )
+rotation = -0.785398
+scale = Vector2( 4, 4 )
+offset = Vector2( 5, -4 )
+
+[node name="HitBox" parent="Node2D/Sprite" groups=[
+"PlayerWeapon",
+] instance=ExtResource( 1 )]
+position = Vector2( 4.30643, -3.0086 )
+damage = 10
+
+[node name="CollisionShape2D" parent="Node2D/Sprite/HitBox" index="0"]
+rotation = 0.785398
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[editable path="Node2D/Sprite/HitBox"]

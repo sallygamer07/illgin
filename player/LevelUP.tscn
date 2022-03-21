@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://graphics/font/joystix.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 4
+glow_enabled = true
+glow_strength = 0.95
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+
+[node name="LevelUP" type="Label"]
+modulate = Color( 0.376471, 1, 0.458824, 1 )
+margin_left = -32.0
+margin_top = -63.6021
+margin_right = 40.0
+margin_bottom = -51.6021
+custom_fonts/font = SubResource( 1 )
+text = "Level UP!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )

@@ -1,0 +1,67 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://graphics/particles/metaeo/frame_metaeo/1.png" type="Texture" id=1]
+[ext_resource path="res://graphics/particles/metaeo/frame_metaeo/0.png" type="Texture" id=2]
+[ext_resource path="res://player/metaeo.gd" type="Script" id=3]
+[ext_resource path="res://audio/Fire.wav" type="AudioStream" id=4]
+[ext_resource path="res://graphics/particles/smoke/2.png" type="Texture" id=5]
+[ext_resource path="res://graphics/particles/smoke/4.png" type="Texture" id=6]
+[ext_resource path="res://graphics/particles/smoke/5.png" type="Texture" id=7]
+[ext_resource path="res://graphics/particles/smoke/0.png" type="Texture" id=8]
+[ext_resource path="res://graphics/particles/smoke/1.png" type="Texture" id=9]
+[ext_resource path="res://graphics/particles/smoke/3.png" type="Texture" id=10]
+[ext_resource path="res://graphics/light_.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "metaeo",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "smoke",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 32.0
+
+[node name="metaeo" type="StaticBody2D"]
+script = ExtResource( 3 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -16 )
+frames = SubResource( 1 )
+animation = "metaeo"
+playing = true
+
+[node name="smoke" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "smoke"
+speed_scale = 1.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+bus = "SFX"
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 11 )
+color = Color( 1, 0.666667, 0.235294, 1 )
+energy = 0.7
+
+[node name="Collider" type="Area2D" parent="." groups=[
+"Metaeo",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2( 0, -8 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="Collider" to="." method="_on_Collider_area_entered"]
+[connection signal="area_exited" from="Collider" to="." method="_on_Collider_area_exited"]

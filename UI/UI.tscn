@@ -1,0 +1,601 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://graphics/font/joystix.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/UI.gd" type="Script" id=3]
+[ext_resource path="res://graphics/particles/flame/fire.png" type="Texture" id=4]
+[ext_resource path="res://graphics/particles/heal/heal.png" type="Texture" id=5]
+[ext_resource path="res://graphics/BloodOverlay.png" type="Texture" id=6]
+[ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://player/Inventory.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/PotionShopUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://graphics/player/skill_slot.png" type="Texture" id=10]
+[ext_resource path="res://UI/SkillTree.tscn" type="PackedScene" id=11]
+[ext_resource path="res://graphics/particles/metaeo/metaeo.png" type="Texture" id=12]
+[ext_resource path="res://graphics/particles/aura/aura.png" type="Texture" id=13]
+[ext_resource path="res://graphics/particles/metaeo/light_metaeo.png" type="Texture" id=14]
+[ext_resource path="res://graphics/font/PF스타더스트S+Bold.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://graphics/box.png" type="Texture" id=16]
+[ext_resource path="res://UI/HotBar.tscn" type="PackedScene" id=17]
+[ext_resource path="res://UI/Dialog_box.tscn" type="PackedScene" id=18]
+[ext_resource path="res://UI/QuestSystem/QuestTree.tscn" type="PackedScene" id=19]
+[ext_resource path="res://audio/alam.mp3" type="AudioStream" id=20]
+[ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=21]
+[ext_resource path="res://UI/WeaponShopUI.tscn" type="PackedScene" id=22]
+[ext_resource path="res://player/CollectItemLabel.tscn" type="PackedScene" id=23]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.556863 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.917647, 0.588235, 0.168627, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0.556863 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.917647, 0.588235, 0.168627, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.556863 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.917647, 0.588235, 0.168627, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.580392, 0.0862745, 0.0862745, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0.486275 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 0.619608, 0.207843, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id=7]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.917647, 0.588235, 0.168627, 1 )
+Button/colors/font_color_pressed = Color( 0.917647, 0.588235, 0.168627, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = ExtResource( 21 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource( 1 )
+Button/styles/normal = SubResource( 2 )
+Button/styles/pressed = SubResource( 3 )
+CheckButton/colors/font_color = Color( 1, 1, 1, 1 )
+CheckButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+CheckButton/colors/font_color_hover_pressed = Color( 0.917647, 0.588235, 0.168627, 1 )
+CheckButton/colors/font_color_pressed = Color( 0.917647, 0.588235, 0.168627, 1 )
+CheckButton/constants/check_vadjust = 0
+CheckButton/constants/hseparation = 4
+CheckButton/fonts/font = ExtResource( 21 )
+CheckButton/icons/off = null
+CheckButton/icons/off_disabled = null
+CheckButton/icons/on = null
+CheckButton/icons/on_disabled = null
+CheckButton/styles/disabled = null
+CheckButton/styles/focus = null
+CheckButton/styles/hover = null
+CheckButton/styles/hover_pressed = null
+CheckButton/styles/normal = null
+CheckButton/styles/pressed = null
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = ExtResource( 21 )
+Label/styles/normal = null
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = ExtResource( 2 )
+ProgressBar/styles/bg = SubResource( 4 )
+ProgressBar/styles/fg = SubResource( 5 )
+Tree/colors/custom_button_font_highlight = Color( 1, 1, 1, 1 )
+Tree/colors/drop_position_color = Color( 1, 0.3, 0.2, 1 )
+Tree/colors/font_color = Color( 1, 1, 1, 1 )
+Tree/colors/font_color_selected = Color( 1, 1, 1, 1 )
+Tree/colors/guide_color = Color( 0, 0, 0, 0.1 )
+Tree/colors/relationship_line_color = Color( 0.27, 0.27, 0.27, 1 )
+Tree/colors/title_button_color = Color( 0.88, 0.88, 0.88, 1 )
+Tree/constants/button_margin = 4
+Tree/constants/draw_guides = 1
+Tree/constants/draw_relationship_lines = 0
+Tree/constants/hseparation = 4
+Tree/constants/item_margin = 12
+Tree/constants/scroll_border = 4
+Tree/constants/scroll_speed = 12
+Tree/constants/vseparation = 4
+Tree/fonts/font = ExtResource( 21 )
+Tree/fonts/title_button_font = ExtResource( 21 )
+Tree/icons/arrow = null
+Tree/icons/arrow_collapsed = null
+Tree/icons/checked = null
+Tree/icons/select_arrow = null
+Tree/icons/unchecked = null
+Tree/icons/updown = null
+Tree/styles/bg = SubResource( 6 )
+Tree/styles/bg_focus = SubResource( 6 )
+Tree/styles/button_pressed = null
+Tree/styles/cursor = null
+Tree/styles/cursor_unfocused = null
+Tree/styles/custom_button = null
+Tree/styles/custom_button_hover = null
+Tree/styles/custom_button_pressed = null
+Tree/styles/selected = null
+Tree/styles/selected_focus = null
+Tree/styles/title_button_hover = null
+Tree/styles/title_button_normal = null
+Tree/styles/title_button_pressed = null
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.129412, 0.215686, 0.690196, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id=10]
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = ExtResource( 2 )
+ProgressBar/styles/bg = SubResource( 8 )
+ProgressBar/styles/fg = SubResource( 9 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.0117647, 0.721569, 0, 1 )
+
+[sub_resource type="Theme" id=13]
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = null
+ProgressBar/styles/bg = SubResource( 11 )
+ProgressBar/styles/fg = SubResource( 12 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 15 )
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.53516
+margin_right = 1.53516
+mouse_filter = 2
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 192.0
+margin_bottom = 32.0
+theme = SubResource( 7 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HealthBar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = -15.0
+margin_right = 51.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 21 )
+custom_colors/font_color = Color( 1, 0.752941, 0.752941, 1 )
+text = "10/100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManaBar" type="ProgressBar" parent="."]
+margin_left = 8.0
+margin_top = 40.0
+margin_right = 192.0
+margin_bottom = 62.0
+theme = SubResource( 10 )
+value = 50.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="ManaBar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -54.0
+margin_top = -14.0
+margin_right = 52.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 21 )
+custom_colors/font_color = Color( 0.509804, 0.701961, 1, 1 )
+text = "10/100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExpBar" type="ProgressBar" parent="."]
+margin_left = 214.465
+margin_top = 16.0
+margin_right = 992.465
+margin_bottom = 32.0
+theme = SubResource( 13 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ExpBar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -53.0
+margin_top = -16.0
+margin_right = 53.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 21 )
+text = "10/100"
+align = 1
+valign = 1
+
+[node name="PlayerLevel" type="Label" parent="."]
+margin_left = 854.465
+margin_top = 48.0
+margin_right = 990.465
+margin_bottom = 80.0
+theme = ExtResource( 1 )
+text = "1 레벨"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="TextureRect" parent="."]
+margin_left = 16.0
+margin_top = 512.0
+margin_right = 96.0
+margin_bottom = 592.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="TextureRect" parent="."]
+visible = false
+margin_left = 21.0
+margin_top = 517.0
+margin_right = 91.0
+margin_bottom = 587.0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fire" type="TextureRect" parent="Bg"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 67.0
+margin_bottom = 67.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bg"]
+margin_left = 3.0
+margin_top = -13.0
+margin_right = 10.0
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 14 )
+text = "1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg2" type="TextureRect" parent="."]
+visible = false
+margin_left = 101.0
+margin_top = 517.0
+margin_right = 171.0
+margin_bottom = 587.0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heal" type="TextureRect" parent="Bg2"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 67.0
+margin_bottom = 67.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bg2"]
+margin_left = 3.0
+margin_top = -13.0
+margin_right = 10.0
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 14 )
+text = "2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg3" type="TextureRect" parent="."]
+visible = false
+margin_left = 182.0
+margin_top = 517.0
+margin_right = 252.0
+margin_bottom = 587.0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Metaeo" type="TextureRect" parent="Bg3"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 67.0
+margin_bottom = 67.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bg3"]
+margin_left = 2.0
+margin_top = -13.0
+margin_right = 9.0
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 14 )
+text = "3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg4" type="TextureRect" parent="."]
+visible = false
+margin_left = 262.0
+margin_top = 517.0
+margin_right = 332.0
+margin_bottom = 587.0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="light_Metaeo" type="TextureRect" parent="Bg4"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 67.0
+margin_bottom = 67.0
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bg4"]
+margin_left = 2.0
+margin_top = -13.0
+margin_right = 9.0
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 14 )
+text = "4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg5" type="TextureRect" parent="."]
+visible = false
+margin_left = 342.0
+margin_top = 517.0
+margin_right = 412.0
+margin_bottom = 587.0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="aura" type="TextureRect" parent="Bg5"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 67.0
+margin_bottom = 67.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bg5"]
+margin_left = 2.0
+margin_top = -13.0
+margin_right = 9.0
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 14 )
+text = "5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HurtOverlay" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.54902 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_right = 8.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoManaWarning" type="Label" parent="."]
+visible = false
+margin_left = 432.0
+margin_top = 24.0
+margin_right = 634.0
+margin_bottom = 56.0
+mouse_filter = 1
+theme = ExtResource( 1 )
+text = " 마나가 부족합니다. "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoEmptySlot" type="Label" parent="."]
+visible = false
+margin_left = 393.0
+margin_top = 24.0
+margin_right = 658.0
+margin_bottom = 56.0
+mouse_filter = 1
+theme = ExtResource( 1 )
+text = "인벤토리가 가득 찼습니다."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestTree" parent="." instance=ExtResource( 19 )]
+visible = false
+
+[node name="Dialog_box" parent="." instance=ExtResource( 18 )]
+margin_left = 0.0
+margin_top = -584.0
+margin_right = 0.0
+margin_bottom = 1.0
+
+[node name="CollectItemLabel" parent="." instance=ExtResource( 23 )]
+
+[node name="Inventory" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="HotBar" parent="." instance=ExtResource( 17 )]
+position = Vector2( 520, 528 )
+
+[node name="Shops" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PotionShopUI" parent="Shops" instance=ExtResource( 9 )]
+
+[node name="WeaponShopUI" parent="Shops" instance=ExtResource( 22 )]
+
+[node name="원거리" parent="Shops/WeaponShopUI/TabContainer" index="1"]
+visible = false
+
+[node name="SkillTree" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="AlamAuido" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+bus = "SFX"
+
+[editable path="Shops/PotionShopUI"]
+[editable path="Shops/WeaponShopUI"]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://graphics/particles/flame/frames/03.png" type="Texture" id=1]
+[ext_resource path="res://graphics/particles/flame/frames/11.png" type="Texture" id=2]
+[ext_resource path="res://graphics/particles/flame/frames/01.png" type="Texture" id=3]
+[ext_resource path="res://graphics/particles/flame/frames/10.png" type="Texture" id=4]
+[ext_resource path="res://graphics/particles/flame/frames/06.png" type="Texture" id=5]
+[ext_resource path="res://graphics/particles/flame/frames/02.png" type="Texture" id=6]
+[ext_resource path="res://graphics/particles/flame/frames/08.png" type="Texture" id=7]
+[ext_resource path="res://graphics/particles/flame/frames/07.png" type="Texture" id=8]
+[ext_resource path="res://graphics/particles/flame/frames/04.png" type="Texture" id=9]
+[ext_resource path="res://graphics/particles/flame/frames/09.png" type="Texture" id=10]
+[ext_resource path="res://graphics/particles/flame/frames/05.png" type="Texture" id=11]
+[ext_resource path="res://player/Flame.gd" type="Script" id=13]
+[ext_resource path="res://audio/attack/fireball.wav" type="AudioStream" id=14]
+[ext_resource path="res://graphics/light_.png" type="Texture" id=15]
+[ext_resource path="res://graphics/particles/smoke/4.png" type="Texture" id=16]
+[ext_resource path="res://graphics/particles/smoke/1.png" type="Texture" id=17]
+[ext_resource path="res://graphics/particles/smoke/3.png" type="Texture" id=18]
+[ext_resource path="res://graphics/particles/smoke/5.png" type="Texture" id=19]
+[ext_resource path="res://graphics/particles/smoke/0.png" type="Texture" id=20]
+[ext_resource path="res://graphics/particles/smoke/2.png" type="Texture" id=21]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "Flame",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 17 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "Smoke",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 16.0
+
+[node name="Flame" type="StaticBody2D"]
+position = Vector2( 0, -16 )
+collision_layer = 4
+script = ExtResource( 13 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Flame"
+frame = 10
+playing = true
+
+[node name="smoke" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 2 )
+animation = "Smoke"
+frame = 4
+speed_scale = 1.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+autoplay = true
+bus = "SFX"
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, 8 )
+texture = ExtResource( 15 )
+texture_scale = 0.1
+color = Color( 0.960784, 0.670588, 0.545098, 1 )
+energy = 0.4
+
+[node name="Collider" type="Area2D" parent="." groups=[
+"Fire",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2( 0, 8 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="Collider" to="." method="_on_Collider_area_entered"]
+[connection signal="area_exited" from="Collider" to="." method="_on_Collider_area_exited"]
+[connection signal="body_entered" from="Collider" to="." method="_on_Collider_body_entered"]
+[connection signal="body_exited" from="Collider" to="." method="_on_Collider_body_exited"]

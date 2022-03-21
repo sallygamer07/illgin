@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://graphics/objects/평범한 검.png" type="Texture" id=1]
+[ext_resource path="res://player/Item.gd" type="Script" id=2]
+[ext_resource path="res://graphics/font/PF스타더스트S+Bold.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="Item" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 40.4793
+margin_top = 44.032
+margin_right = 76.4793
+margin_bottom = 76.032
+custom_fonts/font = SubResource( 1 )
+text = "99"
+__meta__ = {
+"_edit_use_anchors_": false
+}

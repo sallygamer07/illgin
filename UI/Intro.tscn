@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://graphics/intro/1.png" type="Texture" id=1]
+[ext_resource path="res://UI/Intro.gd" type="Script" id=2]
+[ext_resource path="res://graphics/font/PF스타더스트S+Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=4]
+[ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=5]
+[ext_resource path="res://audio/pineapple.mp3" type="AudioStream" id=6]
+[ext_resource path="res://UI/FadeScene.tscn" type="PackedScene" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 3 )
+
+[node name="Intro" type="Node"]
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_top = 536.0
+margin_right = 1080.0
+margin_bottom = 585.0
+rect_min_size = Vector2( 1080, 49 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "옛날 옛날에 빨간모자 일진냥이가 살았어요."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skip" type="Button" parent="."]
+margin_left = 904.0
+margin_top = 8.0
+margin_right = 997.0
+margin_bottom = 46.0
+theme = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
+text = " SKIP "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "Music"
+
+[node name="FadeScene" parent="." instance=ExtResource( 7 )]
+
+[connection signal="pressed" from="Skip" to="." method="_on_Skip_pressed"]
+[connection signal="transitioned" from="FadeScene" to="." method="_on_FadeScene_transitioned"]

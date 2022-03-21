@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://level/Day_Night_Cycle.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "DayNightCycle"
+length = 24.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.5, 8, 14, 16, 18, 20, 24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.129412, 0.160784, 0.356863, 1 ), Color( 0.807843, 0.705882, 0.6, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.686275, 0.415686, 1 ), Color( 0.443137, 0.462745, 0.913725, 1 ), Color( 0.262745, 0.278431, 0.584314, 1 ), Color( 0.129412, 0.160784, 0.356863, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 8, 17.9, 18 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "night"
+}, {
+"args": [  ],
+"method": "day"
+}, {
+"args": [  ],
+"method": "day"
+}, {
+"args": [  ],
+"method": "night"
+} ]
+}
+
+[node name="DayNightCycle" type="CanvasModulate"]
+color = Color( 0.129412, 0.160784, 0.356863, 1 )
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/DayNightCycle = SubResource( 1 )

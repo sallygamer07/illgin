@@ -1,0 +1,374 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/SaveScene.gd" type="Script" id=1]
+[ext_resource path="res://graphics/font/PF스타더스트S+Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="SaveScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_right = 16.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Slot1" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slot1" type="ColorRect" parent="Slot1"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Slot1"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "빈 슬롯"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveSlot1" type="Button" parent="Slot1"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="delete" type="Button" parent="Slot1"]
+margin_left = 288.0
+margin_top = 64.0
+margin_right = 316.0
+margin_bottom = 102.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "X"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2" type="Control" parent="."]
+margin_left = 320.0
+margin_right = 360.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slot2" type="ColorRect" parent="Slot2"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Slot2"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "빈 슬롯"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveSlot2" type="Button" parent="Slot2"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="delete2" type="Button" parent="Slot2"]
+margin_left = 288.0
+margin_top = 64.0
+margin_right = 316.0
+margin_bottom = 102.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "X"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot3" type="Control" parent="."]
+margin_left = 640.0
+margin_right = 680.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slot3" type="ColorRect" parent="Slot3"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Slot3"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "빈 슬롯"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveSlot3" type="Button" parent="Slot3"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="delete3" type="Button" parent="Slot3"]
+margin_left = 288.0
+margin_top = 64.0
+margin_right = 316.0
+margin_bottom = 102.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "X"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot4" type="Control" parent="."]
+margin_top = 256.0
+margin_right = 40.0
+margin_bottom = 296.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slot4" type="ColorRect" parent="Slot4"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Slot4"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "빈 슬롯"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveSlot4" type="Button" parent="Slot4"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="delete4" type="Button" parent="Slot4"]
+margin_left = 288.0
+margin_top = 64.0
+margin_right = 316.0
+margin_bottom = 102.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "X"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot5" type="Control" parent="."]
+margin_left = 320.0
+margin_top = 256.0
+margin_right = 360.0
+margin_bottom = 296.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slot5" type="ColorRect" parent="Slot5"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Slot5"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "빈 슬롯"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveSlot5" type="Button" parent="Slot5"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="delete5" type="Button" parent="Slot5"]
+margin_left = 288.0
+margin_top = 64.0
+margin_right = 316.0
+margin_bottom = 102.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "X"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot6" type="Control" parent="."]
+margin_left = 640.0
+margin_top = 256.0
+margin_right = 680.0
+margin_bottom = 296.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slot6" type="ColorRect" parent="Slot6"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Slot6"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "빈 슬롯"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveSlot6" type="Button" parent="Slot6"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 256.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="delete6" type="Button" parent="Slot6"]
+margin_left = 288.0
+margin_top = 64.0
+margin_right = 316.0
+margin_bottom = 102.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "X"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OK" type="Button" parent="."]
+margin_left = 888.0
+margin_top = 544.0
+margin_right = 992.0
+margin_bottom = 582.0
+theme = ExtResource( 3 )
+text = "OK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Slot1/SaveSlot1" to="." method="_on_SaveSlot1_pressed"]
+[connection signal="pressed" from="Slot1/delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="Slot2/SaveSlot2" to="." method="_on_SaveSlot2_pressed"]
+[connection signal="pressed" from="Slot2/delete2" to="." method="_on_delete2_pressed"]
+[connection signal="pressed" from="Slot3/SaveSlot3" to="." method="_on_SaveSlot3_pressed"]
+[connection signal="pressed" from="Slot3/delete3" to="." method="_on_delete3_pressed"]
+[connection signal="pressed" from="Slot4/SaveSlot4" to="." method="_on_SaveSlot4_pressed"]
+[connection signal="pressed" from="Slot4/delete4" to="." method="_on_delete4_pressed"]
+[connection signal="pressed" from="Slot5/SaveSlot5" to="." method="_on_SaveSlot5_pressed"]
+[connection signal="pressed" from="Slot5/delete5" to="." method="_on_delete5_pressed"]
+[connection signal="pressed" from="Slot6/SaveSlot6" to="." method="_on_SaveSlot6_pressed"]
+[connection signal="pressed" from="Slot6/delete6" to="." method="_on_delete6_pressed"]
+[connection signal="pressed" from="OK" to="." method="_on_OK_pressed"]

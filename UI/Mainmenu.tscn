@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/Settings.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/Mainmenu.gd" type="Script" id=3]
+[ext_resource path="res://UI/LoadScene.tscn" type="PackedScene" id=4]
+[ext_resource path="res://audio/main.ogg" type="AudioStream" id=5]
+[ext_resource path="res://graphics/mainart/mainArt.png" type="Texture" id=6]
+[ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=7]
+[ext_resource path="res://UI/FadeScene.tscn" type="PackedScene" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Mainmenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 211.755
+margin_top = -57.5101
+margin_right = -130.245
+margin_bottom = 2.48987
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 722.625
+margin_top = 128.0
+margin_right = 978.625
+margin_bottom = 160.0
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "* 놀랍게도 주인공입니다."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 56.0
+margin_top = 384.0
+margin_right = 246.0
+margin_bottom = 548.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGame" type="Button" parent="Menu"]
+margin_right = 190.0
+margin_bottom = 38.0
+text = "새 게임"
+
+[node name="LoadGame" type="Button" parent="Menu"]
+margin_top = 42.0
+margin_right = 190.0
+margin_bottom = 80.0
+text = "게임 불러오기"
+
+[node name="Settings" type="Button" parent="Menu"]
+margin_top = 84.0
+margin_right = 190.0
+margin_bottom = 122.0
+text = "설정"
+
+[node name="Quit" type="Button" parent="Menu"]
+margin_top = 126.0
+margin_right = 190.0
+margin_bottom = 164.0
+text = "게임 종료"
+
+[node name="Settings" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="LoadScene" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="Main" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Music"
+
+[node name="FadeScene" parent="." instance=ExtResource( 8 )]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 523, 300 )
+scale = Vector2( 53.3, 31.6 )
+
+[connection signal="pressed" from="Menu/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="Menu/LoadGame" to="." method="_on_LoadGame_pressed"]
+[connection signal="pressed" from="Menu/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Menu/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="transitioned" from="FadeScene" to="." method="_on_FadeScene_transitioned"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+
+[editable path="Settings"]
+[editable path="LoadScene"]

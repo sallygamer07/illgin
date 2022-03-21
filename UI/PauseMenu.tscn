@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://UI/Settings.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/FadeScene.tscn" type="PackedScene" id=5]
+
+[node name="PauseMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_right = 32.0
+color = Color( 0, 0, 0, 0.533333 )
+
+[node name="Resume" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 328.0
+margin_right = 304.0
+margin_bottom = 366.0
+theme = ExtResource( 1 )
+text = "계속하기"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="settingsBtn" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 386.0
+margin_right = 304.0
+margin_bottom = 424.0
+theme = ExtResource( 1 )
+text = "설정"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveGame" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 448.0
+margin_right = 304.0
+margin_bottom = 486.0
+theme = ExtResource( 1 )
+text = "게임 저장하기"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 512.0
+margin_right = 304.0
+margin_bottom = 550.0
+theme = ExtResource( 1 )
+text = "메인 메뉴로"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" parent="." instance=ExtResource( 4 )]
+
+[node name="FadeScene" parent="." instance=ExtResource( 5 )]
+
+[connection signal="pressed" from="Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="settingsBtn" to="." method="_on_settingsBtn_pressed"]
+[connection signal="pressed" from="SaveGame" to="." method="_on_SaveGame_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="transitioned" from="FadeScene" to="." method="_on_FadeScene_transitioned"]

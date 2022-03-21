@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=1]
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=2]
+[ext_resource path="res://UI/Tutorial.gd" type="Script" id=3]
+
+[node name="Tutorial" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 424.0
+margin_top = 32.0
+margin_right = 492.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 1 )
+text = "조작키"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 104.0
+margin_right = -64.0
+margin_bottom = -48.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "WASD - 이동
+SHIFT - 대쉬
+마우스 좌클릭 - 공격
+마우스 휠 버튼 - 아이템 선택
+마우스 우클릭 - 아이템 사용
+마우스 휠 스크롤 - 아이템 슬롯 선택
+B - 인벤토리
+E - 대상과 상호작용
+Q - 퀘스트 창
+K - 스킬 창
+P - 스탯 창
+숫자 키 - 스킬 선택
+ESC - 정지 / 메뉴"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="."]
+margin_left = 24.0
+margin_top = 544.0
+margin_right = 160.0
+margin_bottom = 582.0
+theme = ExtResource( 2 )
+text = "설정으로"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

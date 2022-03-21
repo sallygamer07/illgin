@@ -1,0 +1,1289 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://graphics/font/PF스타더스트S+Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://graphics/objects/노인과 지팡이.png" type="Texture" id=2]
+[ext_resource path="res://graphics/objects/coin.png" type="Texture" id=3]
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=4]
+[ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=5]
+[ext_resource path="res://UI/price.gd" type="Script" id=6]
+[ext_resource path="res://UI/Store.gd" type="Script" id=7]
+[ext_resource path="res://UI/WeaponsTab.gd" type="Script" id=8]
+[ext_resource path="res://graphics/objects/말라비틀어진 나뭇가지.png" type="Texture" id=9]
+[ext_resource path="res://graphics/objects/냥냥이의 장난감 낚싯대.png" type="Texture" id=10]
+[ext_resource path="res://graphics/weapons/lance/정육점 창.png" type="Texture" id=11]
+[ext_resource path="res://graphics/weapons/sword/평범한 검.png" type="Texture" id=12]
+[ext_resource path="res://graphics/weapons/rapier/고깔색 레이피어.png" type="Texture" id=13]
+[ext_resource path="res://graphics/weapons/sai/녹슨 삼지창.png" type="Texture" id=14]
+[ext_resource path="res://graphics/weapons/axe/나무꾼이 떨어뜨린 도끼.png" type="Texture" id=15]
+[ext_resource path="res://UI/WeaponsTab2.gd" type="Script" id=16]
+[ext_resource path="res://graphics/objects/초심자용 활.png" type="Texture" id=17]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.109804, 0.188235, 0.266667, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.47451, 0.541176, 0.733333, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.215686, 0.337255, 0.462745, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.317647, 0.47451, 0.627451, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.172549, 0.298039, 0.47451, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.172549, 0.298039, 0.47451, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.317647, 0.47451, 0.627451, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.317647, 0.47451, 0.627451, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+
+[sub_resource type="Theme" id=7]
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = SubResource( 1 )
+HScrollBar/styles/grabber_highlight = SubResource( 2 )
+HScrollBar/styles/grabber_pressed = SubResource( 2 )
+HScrollBar/styles/scroll = null
+HScrollBar/styles/scroll_focus = null
+Panel/styles/panel = SubResource( 3 )
+TabContainer/colors/font_color_bg = Color( 0.69, 0.69, 0.69, 1 )
+TabContainer/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+TabContainer/colors/font_color_fg = Color( 0.94, 0.94, 0.94, 1 )
+TabContainer/constants/hseparation = 4
+TabContainer/constants/label_valign_bg = 2
+TabContainer/constants/label_valign_fg = 0
+TabContainer/constants/side_margin = 8
+TabContainer/constants/top_margin = 24
+TabContainer/fonts/font = ExtResource( 5 )
+TabContainer/icons/decrement = null
+TabContainer/icons/decrement_highlight = null
+TabContainer/icons/increment = null
+TabContainer/icons/increment_highlight = null
+TabContainer/icons/menu = null
+TabContainer/icons/menu_highlight = null
+TabContainer/styles/panel = SubResource( 4 )
+TabContainer/styles/tab_bg = SubResource( 5 )
+TabContainer/styles/tab_disabled = null
+TabContainer/styles/tab_fg = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 50
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.603922, 0.478431, 0.290196, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.576471, 0.439216, 0.239216, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.803922, 0.682353, 0.505882, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.819608, 0.705882, 0.541176, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.603922, 0.478431, 0.360784, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.572549, 0.439216, 0.313726, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.490196, 0.356863, 0.168627, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.643137, 0.505882, 0.305882, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.643137, 0.505882, 0.305882, 1 )
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.862793, 0.772061, 0.640354, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.909668, 0.835918, 0.731998, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.572549, 0.439216, 0.313726, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.803922, 0.682353, 0.505882, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.803922, 0.682353, 0.505882, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.576471, 0.439216, 0.239216, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_color = Color( 0.576471, 0.439216, 0.239216, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.803922, 0.682353, 0.505882, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_color = Color( 0.803922, 0.682353, 0.505882, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="Theme" id=21]
+default_font = ExtResource( 5 )
+Button/colors/font_color = Color( 0.572549, 0.439216, 0.313726, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0.803922, 0.682353, 0.505882, 1 )
+Button/colors/font_color_pressed = Color( 0.803922, 0.682353, 0.505882, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource( 9 )
+Button/styles/normal = SubResource( 10 )
+Button/styles/pressed = SubResource( 11 )
+CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 4
+CheckBox/fonts/font = null
+CheckBox/icons/checked = null
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/unchecked = null
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+CheckButton/colors/font_color = Color( 0, 0, 0, 1 )
+CheckButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+CheckButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+CheckButton/colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+CheckButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+CheckButton/constants/check_vadjust = 0
+CheckButton/constants/hseparation = 4
+CheckButton/fonts/font = null
+CheckButton/icons/off = null
+CheckButton/icons/off_disabled = null
+CheckButton/icons/on = null
+CheckButton/icons/on_disabled = null
+CheckButton/styles/disabled = null
+CheckButton/styles/focus = null
+CheckButton/styles/hover = null
+CheckButton/styles/hover_pressed = null
+CheckButton/styles/normal = null
+CheckButton/styles/pressed = null
+ColorPicker/constants/h_width = 30
+ColorPicker/constants/label_width = 10
+ColorPicker/constants/margin = 4
+ColorPicker/constants/sv_height = 256
+ColorPicker/constants/sv_width = 256
+ColorPicker/icons/add_preset = null
+ColorPicker/icons/color_hue = null
+ColorPicker/icons/color_sample = null
+ColorPicker/icons/overbright_indicator = null
+ColorPicker/icons/preset_bg = null
+ColorPicker/icons/screen_picker = null
+ColorPickerButton/colors/font_color = Color( 0, 0, 0, 1 )
+ColorPickerButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+ColorPickerButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+ColorPickerButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+ColorPickerButton/constants/hseparation = 2
+ColorPickerButton/fonts/font = null
+ColorPickerButton/icons/bg = null
+ColorPickerButton/styles/disabled = null
+ColorPickerButton/styles/focus = null
+ColorPickerButton/styles/hover = null
+ColorPickerButton/styles/normal = null
+ColorPickerButton/styles/pressed = null
+Dialogs/constants/button_margin = 32
+Dialogs/constants/margin = 8
+FileDialog/colors/file_icon_modulate = Color( 0, 0, 0, 1 )
+FileDialog/colors/files_disabled = Color( 0, 0, 0, 1 )
+FileDialog/colors/folder_icon_modulate = Color( 0, 0, 0, 1 )
+FileDialog/icons/file = null
+FileDialog/icons/folder = null
+FileDialog/icons/parent_folder = null
+FileDialog/icons/reload = null
+FileDialog/icons/toggle_hidden = null
+Fonts/fonts/large = null
+Fonts/fonts/normal = null
+GraphEdit/colors/activity = Color( 0, 0, 0, 1 )
+GraphEdit/colors/grid_major = Color( 0, 0, 0, 1 )
+GraphEdit/colors/grid_minor = Color( 0, 0, 0, 1 )
+GraphEdit/colors/selection_fill = Color( 0, 0, 0, 1 )
+GraphEdit/colors/selection_stroke = Color( 0, 0, 0, 1 )
+GraphEdit/constants/bezier_len_neg = 160
+GraphEdit/constants/bezier_len_pos = 80
+GraphEdit/constants/port_grab_distance_horizontal = 48
+GraphEdit/constants/port_grab_distance_vertical = 6
+GraphEdit/icons/minimap = null
+GraphEdit/icons/minus = null
+GraphEdit/icons/more = null
+GraphEdit/icons/reset = null
+GraphEdit/icons/snap = null
+GraphEdit/styles/bg = null
+GraphEditMinimap/colors/resizer_color = Color( 0, 0, 0, 1 )
+GraphEditMinimap/icons/resizer = null
+GraphEditMinimap/styles/bg = null
+GraphEditMinimap/styles/camera = null
+GraphEditMinimap/styles/node = null
+GraphNode/colors/close_color = Color( 0, 0, 0, 1 )
+GraphNode/colors/resizer_color = Color( 0, 0, 0, 1 )
+GraphNode/colors/title_color = Color( 0, 0, 0, 1 )
+GraphNode/constants/close_offset = 18
+GraphNode/constants/port_offset = 3
+GraphNode/constants/separation = 1
+GraphNode/constants/title_offset = 20
+GraphNode/fonts/title_font = null
+GraphNode/icons/close = null
+GraphNode/icons/port = null
+GraphNode/icons/resizer = null
+GraphNode/styles/breakpoint = null
+GraphNode/styles/comment = null
+GraphNode/styles/commentfocus = null
+GraphNode/styles/defaultfocus = null
+GraphNode/styles/defaultframe = null
+GraphNode/styles/frame = null
+GraphNode/styles/position = null
+GraphNode/styles/selectedframe = null
+GridContainer/constants/hseparation = 4
+GridContainer/constants/vseparation = 4
+HBoxContainer/constants/separation = 4
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = SubResource( 12 )
+HScrollBar/styles/grabber_highlight = SubResource( 13 )
+HScrollBar/styles/grabber_pressed = SubResource( 14 )
+HScrollBar/styles/scroll = SubResource( 15 )
+HScrollBar/styles/scroll_focus = SubResource( 16 )
+HSeparator/constants/separation = 4
+HSeparator/styles/separator = null
+HSlider/icons/grabber = null
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = null
+HSlider/styles/grabber_area_highlight = null
+HSlider/styles/slider = null
+HSplitContainer/constants/autohide = 1
+HSplitContainer/constants/separation = 12
+HSplitContainer/icons/grabber = null
+HSplitContainer/styles/bg = null
+Icons/icons/close = null
+ItemList/colors/font_color = Color( 0, 0, 0, 1 )
+ItemList/colors/font_color_selected = Color( 0, 0, 0, 1 )
+ItemList/colors/guide_color = Color( 0, 0, 0, 1 )
+ItemList/constants/hseparation = 4
+ItemList/constants/icon_margin = 4
+ItemList/constants/line_separation = 2
+ItemList/constants/vseparation = 2
+ItemList/fonts/font = null
+ItemList/styles/bg = null
+ItemList/styles/bg_focus = null
+ItemList/styles/cursor = null
+ItemList/styles/cursor_unfocused = null
+ItemList/styles/selected = null
+ItemList/styles/selected_focus = null
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+LineEdit/colors/clear_button_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
+LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0, 0, 0, 1 )
+LineEdit/colors/selection_color = Color( 0, 0, 0, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = null
+LineEdit/styles/normal = null
+LineEdit/styles/read_only = null
+LinkButton/colors/font_color = Color( 0, 0, 0, 1 )
+LinkButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+LinkButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+LinkButton/constants/underline_spacing = 2
+LinkButton/fonts/font = null
+LinkButton/styles/focus = null
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0
+MenuButton/colors/font_color = Color( 0, 0, 0, 1 )
+MenuButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+MenuButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+MenuButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+MenuButton/constants/hseparation = 3
+MenuButton/fonts/font = null
+MenuButton/styles/disabled = null
+MenuButton/styles/focus = null
+MenuButton/styles/hover = null
+MenuButton/styles/normal = null
+MenuButton/styles/pressed = null
+OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+OptionButton/constants/arrow_margin = 2
+OptionButton/constants/hseparation = 2
+OptionButton/fonts/font = null
+OptionButton/icons/arrow = null
+OptionButton/styles/disabled = null
+OptionButton/styles/focus = null
+OptionButton/styles/hover = null
+OptionButton/styles/normal = null
+OptionButton/styles/pressed = null
+Panel/styles/panel = SubResource( 17 )
+PanelContainer/styles/panel = null
+PopupDialog/styles/panel = null
+PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_separator = Color( 0, 0, 0, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = null
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = null
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = null
+PopupMenu/styles/panel_disabled = null
+PopupMenu/styles/separator = null
+PopupPanel/styles/panel = null
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = null
+ProgressBar/styles/bg = null
+ProgressBar/styles/fg = null
+RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/selection_color = Color( 0, 0, 0, 1 )
+RichTextLabel/constants/line_separation = 1
+RichTextLabel/constants/shadow_as_outline = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+ScrollContainer/styles/bg = null
+SpinBox/icons/updown = null
+TabContainer/colors/font_color_bg = Color( 0.305882, 0.207843, 0.0705882, 1 )
+TabContainer/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0.576471, 0.439216, 0.239216, 1 )
+TabContainer/constants/hseparation = 4
+TabContainer/constants/label_valign_bg = 2
+TabContainer/constants/label_valign_fg = 0
+TabContainer/constants/side_margin = 8
+TabContainer/constants/top_margin = 24
+TabContainer/fonts/font = null
+TabContainer/icons/decrement = null
+TabContainer/icons/decrement_highlight = null
+TabContainer/icons/increment = null
+TabContainer/icons/increment_highlight = null
+TabContainer/icons/menu = null
+TabContainer/icons/menu_highlight = null
+TabContainer/styles/panel = SubResource( 18 )
+TabContainer/styles/tab_bg = SubResource( 19 )
+TabContainer/styles/tab_disabled = null
+TabContainer/styles/tab_fg = SubResource( 20 )
+Tabs/colors/font_color_bg = Color( 0.305882, 0.207843, 0.0705882, 1 )
+Tabs/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+Tabs/colors/font_color_fg = Color( 0.576471, 0.439216, 0.239216, 1 )
+Tabs/constants/hseparation = 4
+Tabs/constants/label_valign_bg = 2
+Tabs/constants/label_valign_fg = 0
+Tabs/constants/top_margin = 24
+Tabs/fonts/font = null
+Tabs/icons/close = null
+Tabs/icons/decrement = null
+Tabs/icons/decrement_highlight = null
+Tabs/icons/increment = null
+Tabs/icons/increment_highlight = null
+Tabs/styles/button = null
+Tabs/styles/button_pressed = null
+Tabs/styles/panel = null
+Tabs/styles/tab_bg = null
+Tabs/styles/tab_disabled = null
+Tabs/styles/tab_fg = null
+TextEdit/colors/background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/bookmark_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/brace_mismatch_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/breakpoint_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/caret_background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/caret_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/code_folding_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/completion_background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/completion_existing_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/completion_font_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/completion_scroll_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/completion_selected_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/current_line_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/executing_line_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/font_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/font_color_readonly = Color( 0, 0, 0, 1 )
+TextEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+TextEdit/colors/function_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/line_number_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/mark_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/member_variable_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/number_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/safe_line_number_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/selection_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/symbol_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/word_highlighted_color = Color( 0, 0, 0, 1 )
+TextEdit/constants/completion_lines = 7
+TextEdit/constants/completion_max_width = 50
+TextEdit/constants/completion_scroll_width = 3
+TextEdit/constants/line_spacing = 4
+TextEdit/fonts/font = null
+TextEdit/icons/fold = null
+TextEdit/icons/folded = null
+TextEdit/icons/space = null
+TextEdit/icons/tab = null
+TextEdit/styles/completion = null
+TextEdit/styles/focus = null
+TextEdit/styles/normal = null
+TextEdit/styles/read_only = null
+ToolButton/colors/font_color = Color( 0, 0, 0, 1 )
+ToolButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+ToolButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+ToolButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+ToolButton/constants/hseparation = 3
+ToolButton/fonts/font = null
+ToolButton/styles/disabled = null
+ToolButton/styles/focus = null
+ToolButton/styles/hover = null
+ToolButton/styles/normal = null
+ToolButton/styles/pressed = null
+TooltipLabel/colors/font_color = Color( 0, 0, 0, 1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+TooltipLabel/constants/shadow_offset_x = 1
+TooltipLabel/constants/shadow_offset_y = 1
+TooltipLabel/fonts/font = null
+TooltipPanel/styles/panel = null
+Tree/colors/custom_button_font_highlight = Color( 0, 0, 0, 1 )
+Tree/colors/drop_position_color = Color( 0, 0, 0, 1 )
+Tree/colors/font_color = Color( 0, 0, 0, 1 )
+Tree/colors/font_color_selected = Color( 0, 0, 0, 1 )
+Tree/colors/guide_color = Color( 0, 0, 0, 1 )
+Tree/colors/relationship_line_color = Color( 0, 0, 0, 1 )
+Tree/colors/title_button_color = Color( 0, 0, 0, 1 )
+Tree/constants/button_margin = 4
+Tree/constants/draw_guides = 1
+Tree/constants/draw_relationship_lines = 0
+Tree/constants/hseparation = 4
+Tree/constants/item_margin = 12
+Tree/constants/scroll_border = 4
+Tree/constants/scroll_speed = 12
+Tree/constants/vseparation = 4
+Tree/fonts/font = null
+Tree/fonts/title_button_font = null
+Tree/icons/arrow = null
+Tree/icons/arrow_collapsed = null
+Tree/icons/checked = null
+Tree/icons/select_arrow = null
+Tree/icons/unchecked = null
+Tree/icons/updown = null
+Tree/styles/bg = null
+Tree/styles/bg_focus = null
+Tree/styles/button_pressed = null
+Tree/styles/cursor = null
+Tree/styles/cursor_unfocused = null
+Tree/styles/custom_button = null
+Tree/styles/custom_button_hover = null
+Tree/styles/custom_button_pressed = null
+Tree/styles/selected = null
+Tree/styles/selected_focus = null
+Tree/styles/title_button_hover = null
+Tree/styles/title_button_normal = null
+Tree/styles/title_button_pressed = null
+VBoxContainer/constants/separation = 4
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber_highlight = null
+VScrollBar/styles/grabber_pressed = null
+VScrollBar/styles/scroll = null
+VScrollBar/styles/scroll_focus = null
+VSeparator/constants/separation = 4
+VSeparator/styles/separator = null
+VSlider/icons/grabber = null
+VSlider/icons/grabber_disabled = null
+VSlider/icons/grabber_highlight = null
+VSlider/icons/tick = null
+VSlider/styles/grabber_area = null
+VSlider/styles/grabber_area_highlight = null
+VSlider/styles/slider = null
+VSplitContainer/constants/autohide = 1
+VSplitContainer/constants/separation = 12
+VSplitContainer/icons/grabber = null
+VSplitContainer/styles/bg = null
+WindowDialog/colors/title_color = Color( 0, 0, 0, 1 )
+WindowDialog/constants/close_h_ofs = 18
+WindowDialog/constants/close_v_ofs = 18
+WindowDialog/constants/scaleborder_size = 4
+WindowDialog/constants/title_height = 20
+WindowDialog/fonts/title_font = null
+WindowDialog/icons/close = null
+WindowDialog/icons/close_highlight = null
+WindowDialog/styles/panel = null
+
+[sub_resource type="DynamicFont" id=22]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="WeaponShopUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 7 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.513726, 0.6, 0.737255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="header" type="Label" parent="."]
+margin_left = 432.0
+margin_top = 40.0
+margin_right = 593.0
+margin_bottom = 97.0
+custom_fonts/font = SubResource( 8 )
+text = "무기 상점"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cash" type="Label" parent="."]
+margin_left = 832.0
+margin_top = 16.0
+margin_right = 888.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 5 )
+text = "100"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="cash"]
+margin_left = -40.0
+margin_right = -8.0
+margin_bottom = 32.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 152.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="근거리" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 42.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/근거리"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 22.0
+margin_top = 9.0
+margin_right = 1.0
+margin_bottom = -17.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="control" type="Node2D" parent="TabContainer/근거리/RichTextLabel"]
+position = Vector2( -9, 7 )
+
+[node name="Panel1" type="Panel" parent="TabContainer/근거리/RichTextLabel/control"]
+margin_left = 34.0
+margin_right = 298.0
+margin_bottom = 349.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="TabContainer/근거리/RichTextLabel/control/Panel1"]
+position = Vector2( 136, 157 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 12 )
+
+[node name="Buy" type="Button" parent="TabContainer/근거리/RichTextLabel/control/Panel1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -67.0
+margin_right = 64.0
+margin_bottom = -40.0
+theme = SubResource( 21 )
+text = "BUY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/근거리/RichTextLabel/control/Panel1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -59.0
+margin_top = 24.0
+margin_right = 61.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+valign = 1
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+price = 100
+
+[node name="Panel2" type="Panel" parent="TabContainer/근거리/RichTextLabel/control"]
+margin_left = 364.0
+margin_right = 630.0
+margin_bottom = 349.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="TabContainer/근거리/RichTextLabel/control/Panel2"]
+position = Vector2( 136, 157 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 13 )
+
+[node name="Buy" type="Button" parent="TabContainer/근거리/RichTextLabel/control/Panel2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -67.0
+margin_right = 64.0
+margin_bottom = -40.0
+theme = SubResource( 21 )
+text = "BUY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/근거리/RichTextLabel/control/Panel2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -50.0
+margin_top = 24.0
+margin_right = 53.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+valign = 1
+autowrap = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+price = 3000
+
+[node name="Panel3" type="Panel" parent="TabContainer/근거리/RichTextLabel/control"]
+margin_left = 682.0
+margin_right = 948.0
+margin_bottom = 349.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="TabContainer/근거리/RichTextLabel/control/Panel3"]
+position = Vector2( 136, 157 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 11 )
+
+[node name="Buy" type="Button" parent="TabContainer/근거리/RichTextLabel/control/Panel3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -67.0
+margin_right = 64.0
+margin_bottom = -31.0
+theme = SubResource( 21 )
+text = "BUY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/근거리/RichTextLabel/control/Panel3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -58.0
+margin_top = 24.0
+margin_right = 66.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+valign = 1
+script = ExtResource( 6 )
+price = 5000
+
+[node name="Panel4" type="Panel" parent="TabContainer/근거리/RichTextLabel/control"]
+margin_left = 1004.0
+margin_right = 1270.0
+margin_bottom = 349.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="TabContainer/근거리/RichTextLabel/control/Panel4"]
+position = Vector2( 154, 155 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 14 )
+
+[node name="Buy" type="Button" parent="TabContainer/근거리/RichTextLabel/control/Panel4"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -46.0
+margin_top = -69.0
+margin_right = 82.0
+margin_bottom = -33.0
+theme = SubResource( 21 )
+text = "BUY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/근거리/RichTextLabel/control/Panel4"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 22.0
+margin_right = 84.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+valign = 1
+script = ExtResource( 6 )
+price = 7000
+
+[node name="Panel5" type="Panel" parent="TabContainer/근거리/RichTextLabel/control"]
+margin_left = 1322.0
+margin_right = 1588.0
+margin_bottom = 349.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="TabContainer/근거리/RichTextLabel/control/Panel5"]
+position = Vector2( 140, 155 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 15 )
+
+[node name="Buy" type="Button" parent="TabContainer/근거리/RichTextLabel/control/Panel5"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -60.0
+margin_top = -69.0
+margin_right = 68.0
+margin_bottom = -33.0
+theme = SubResource( 21 )
+text = "BUY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/근거리/RichTextLabel/control/Panel5"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -54.0
+margin_top = 22.0
+margin_right = 70.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+valign = 1
+script = ExtResource( 6 )
+price = 10000
+
+[node name="HScrollBar" type="HScrollBar" parent="TabContainer/근거리"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -25.0
+margin_right = -22.0
+theme = ExtResource( 4 )
+max_value = 650.0
+page = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/근거리"]
+visible = false
+margin_left = 270.0
+margin_top = -59.0
+margin_right = 772.0
+margin_bottom = 221.0
+color = Color( 0.105882, 0.105882, 0.105882, 0.74902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/근거리/ColorRect"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 24.0
+margin_right = -14.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 22 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Gg"
+align = 1
+
+[node name="Button" type="Button" parent="TabContainer/근거리/ColorRect"]
+margin_left = 210.0
+margin_top = 232.0
+margin_right = 306.0
+margin_bottom = 259.0
+text = "OK"
+
+[node name="원거리" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 42.0
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/원거리"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 22.0
+margin_top = 9.0
+margin_right = 1.0
+margin_bottom = -17.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="control" type="Node2D" parent="TabContainer/원거리/RichTextLabel"]
+position = Vector2( -9, 7 )
+
+[node name="Panel1" type="Panel" parent="TabContainer/원거리/RichTextLabel/control"]
+margin_left = 34.0
+margin_right = 298.0
+margin_bottom = 349.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="TabContainer/원거리/RichTextLabel/control/Panel1"]
+position = Vector2( 136, 157 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 9 )
+
+[node name="Buy" type="Button" parent="TabContainer/원거리/RichTextLabel/control/Panel1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -67.0
+margin_right = 64.0
+margin_bottom = -40.0
+theme = SubResource( 21 )
+text = "BUY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/원거리/RichTextLabel/control/Panel1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -59.0
+margin_top = 24.0
+margin_right = 61.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+valign = 1
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+price = 50
+
+[node name="Panel2" type="Panel" parent="TabContainer/원거리/RichTextLabel/control"]
+margin_left = 364.0
+margin_right = 630.0
+margin_bottom = 349.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="TabContainer/원거리/RichTextLabel/control/Panel2"]
+position = Vector2( 136, 157 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 10 )
+
+[node name="Buy" type="Button" parent="TabContainer/원거리/RichTextLabel/control/Panel2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -67.0
+margin_right = 64.0
+margin_bottom = -40.0
+theme = SubResource( 21 )
+text = "BUY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/원거리/RichTextLabel/control/Panel2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -50.0
+margin_top = 24.0
+margin_right = 53.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+valign = 1
+autowrap = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+price = 2000
+
+[node name="Panel3" type="Panel" parent="TabContainer/원거리/RichTextLabel/control"]
+margin_left = 682.0
+margin_right = 948.0
+margin_bottom = 349.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="TabContainer/원거리/RichTextLabel/control/Panel3"]
+position = Vector2( 136, 157 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+
+[node name="Buy" type="Button" parent="TabContainer/원거리/RichTextLabel/control/Panel3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -67.0
+margin_right = 64.0
+margin_bottom = -40.0
+theme = SubResource( 21 )
+text = "BUY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/원거리/RichTextLabel/control/Panel3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -58.0
+margin_top = 24.0
+margin_right = 66.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+valign = 1
+script = ExtResource( 6 )
+price = 3000
+
+[node name="Panel4" type="Panel" parent="TabContainer/원거리/RichTextLabel/control"]
+margin_left = 1004.0
+margin_right = 1270.0
+margin_bottom = 349.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="TabContainer/원거리/RichTextLabel/control/Panel4"]
+position = Vector2( 154, 155 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 17 )
+
+[node name="Buy" type="Button" parent="TabContainer/원거리/RichTextLabel/control/Panel4"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -46.0
+margin_top = -69.0
+margin_right = 82.0
+margin_bottom = -33.0
+theme = SubResource( 21 )
+text = "BUY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/원거리/RichTextLabel/control/Panel4"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 22.0
+margin_right = 84.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+valign = 1
+script = ExtResource( 6 )
+price = 2000
+
+[node name="Panel5" type="Panel" parent="TabContainer/원거리/RichTextLabel/control"]
+margin_left = 1322.0
+margin_right = 1588.0
+margin_bottom = 349.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HScrollBar" type="HScrollBar" parent="TabContainer/원거리"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -25.0
+margin_right = -22.0
+theme = ExtResource( 4 )
+max_value = 650.0
+page = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/원거리"]
+visible = false
+margin_left = 270.0
+margin_top = -59.0
+margin_right = 772.0
+margin_bottom = 221.0
+color = Color( 0.105882, 0.105882, 0.105882, 0.74902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/원거리/ColorRect"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 24.0
+margin_right = -14.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 22 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Gg"
+align = 1
+
+[node name="Button" type="Button" parent="TabContainer/원거리/ColorRect"]
+margin_left = 210.0
+margin_top = 232.0
+margin_right = 306.0
+margin_bottom = 259.0
+text = "OK"
+
+[node name="Ask" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 280.0
+margin_top = 136.0
+margin_right = -256.0
+margin_bottom = -184.0
+color = Color( 0.105882, 0.105882, 0.105882, 0.74902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Ask"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 8.0
+margin_right = -14.0
+margin_bottom = 200.0
+custom_fonts/font = SubResource( 22 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Gg"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Yes" type="Button" parent="Ask"]
+margin_left = 88.0
+margin_top = 212.0
+margin_right = 184.0
+margin_bottom = 239.0
+theme = ExtResource( 4 )
+text = "Yes"
+
+[node name="No" type="Button" parent="Ask"]
+margin_left = 312.0
+margin_top = 212.0
+margin_right = 408.0
+margin_bottom = 239.0
+theme = ExtResource( 4 )
+text = "No"
+
+[node name="exit" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 112.0
+margin_bottom = 28.0
+theme = ExtResource( 4 )
+text = "나가기"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="TabContainer/근거리/RichTextLabel/control/Panel1/Buy" to="TabContainer/근거리" method="_on_Buy_pressed"]
+[connection signal="pressed" from="TabContainer/근거리/RichTextLabel/control/Panel2/Buy" to="TabContainer/근거리" method="_on_Buy2_pressed"]
+[connection signal="pressed" from="TabContainer/근거리/RichTextLabel/control/Panel3/Buy" to="TabContainer/근거리" method="_on_Buy3_pressed"]
+[connection signal="pressed" from="TabContainer/근거리/RichTextLabel/control/Panel4/Buy" to="TabContainer/근거리" method="_on_Buy4_pressed"]
+[connection signal="pressed" from="TabContainer/근거리/RichTextLabel/control/Panel5/Buy" to="TabContainer/근거리" method="_on_Buy5_pressed"]
+[connection signal="pressed" from="TabContainer/근거리/ColorRect/Button" to="TabContainer/근거리" method="_on_colorrectButton_pressed"]
+[connection signal="pressed" from="TabContainer/원거리/RichTextLabel/control/Panel1/Buy" to="TabContainer/원거리" method="_on_Buy_pressed"]
+[connection signal="pressed" from="TabContainer/원거리/RichTextLabel/control/Panel2/Buy" to="TabContainer/원거리" method="_on_Buy2_pressed"]
+[connection signal="pressed" from="TabContainer/원거리/RichTextLabel/control/Panel3/Buy" to="TabContainer/원거리" method="_on_Buy3_pressed"]
+[connection signal="pressed" from="TabContainer/원거리/RichTextLabel/control/Panel4/Buy" to="TabContainer/원거리" method="_on_Buy4_pressed"]
+[connection signal="pressed" from="TabContainer/원거리/ColorRect/Button" to="TabContainer/원거리" method="_on_colorrectButton_pressed"]
+[connection signal="pressed" from="Ask/Yes" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="Ask/No" to="." method="_on_No_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

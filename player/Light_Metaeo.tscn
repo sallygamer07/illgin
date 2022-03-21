@@ -1,0 +1,99 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://graphics/light_.png" type="Texture" id=1]
+[ext_resource path="res://player/Light_Metaeo.gd" type="Script" id=2]
+[ext_resource path="res://graphics/particles/smoke/4.png" type="Texture" id=3]
+[ext_resource path="res://graphics/particles/smoke/5.png" type="Texture" id=4]
+[ext_resource path="res://graphics/particles/smoke/2.png" type="Texture" id=5]
+[ext_resource path="res://graphics/particles/smoke/3.png" type="Texture" id=6]
+[ext_resource path="res://graphics/particles/smoke/0.png" type="Texture" id=7]
+[ext_resource path="res://graphics/particles/smoke/1.png" type="Texture" id=8]
+[ext_resource path="res://audio/attack/fireball.wav" type="AudioStream" id=9]
+
+[sub_resource type="Curve" id=1]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 124.364 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.868217, 0.945736 )
+colors = PoolColorArray( 1, 0.728897, 0.574219, 1, 0.954102, 0.391055, 0.130444, 0.967892, 0.96582, 0.357172, 0.0754547, 0.692127 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0.0526316, 0.814773 ), 0.0, 0.0, 0, 0, Vector2( 0.953947, 0.360227 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+resource_local_to_scene = true
+emission_shape = 2
+emission_box_extents = Vector3( 3, 10, 1 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, -90, 0 )
+initial_velocity = 10.0
+angular_velocity = 180.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 20.0
+angle = 45.0
+angle_curve = SubResource( 2 )
+scale = 30.0
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "smoke",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 24.0
+height = 64.0
+
+[node name="Light_Metaeo" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="sprite" type="Particles2D" parent="."]
+amount = 90
+lifetime = 3.0
+preprocess = 60.0
+process_material = SubResource( 7 )
+
+[node name="smoke" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 0, -37 )
+frames = SubResource( 8 )
+animation = "smoke"
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -1.52588e-05 )
+scale = Vector2( 1, 1.17188 )
+texture = ExtResource( 1 )
+texture_scale = 0.2
+color = Color( 1, 0.564706, 0.145098, 1 )
+energy = 0.3
+
+[node name="Collider" type="Area2D" parent="." groups=[
+"Light_Metaeo",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2( 0, -48 )
+shape = SubResource( 9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+bus = "SFX"

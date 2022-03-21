@@ -1,0 +1,16 @@
+{
+  "하급 회복 포션" : {
+    "ItemCategory" : "Consumable",
+    "AddHealth" : 10,
+    "AddMana" : 0,
+    "StackSize" : 99,
+    "Description" : "HP를 10 회복시켜줍니다."
+  },
+  "하급 마나 포션" : {
+    "ItemCategory" : "Consumable",
+    "AddHealth" : 0,
+    "AddMana" : 15,
+    "StackSize" : 99,
+    "Description" : "마나를 15 회복시켜줍니다."
+  }
+}

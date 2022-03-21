@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/PortaltoVilageLabel.gd" type="Script" id=1]
+[ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 151.496
+
+[node name="PortaltoVilageText" type="Control"]
+margin_left = 1280.0
+margin_top = 1339.0
+margin_right = 1280.0
+margin_bottom = 1339.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = -225.834
+margin_top = -56.0
+margin_right = 309.166
+margin_bottom = -24.0
+custom_fonts/font = ExtResource( 2 )
+text = "초록색 포탈은 가장 가까운 마을로 이동하는 포탈이다."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/show = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 47, 54 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
