@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://graphics/portal/Purple Portal Sprite Sheet.png" type="Texture" id=1]
+[ext_resource path="res://object/Portal_toLevel.gd" type="Script" id=2]
+[ext_resource path="res://UI/FadeScene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://graphics/shadows/LargeShadow.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "close"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 17, 18, 19, 20, 21, 22 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shadow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shadow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "open"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14, 15, 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shadow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 14.0656, 62.0416 )
+
+[node name="Portal_toLevel" type="Area2D" groups=[
+"Object",
+]]
+script = ExtResource( 2 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 0, 16 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.396851, -58 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 3
+frame = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/close = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/open = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, -45 )
+shape = SubResource( 4 )
+
+[node name="FadeScene" parent="." instance=ExtResource( 3 )]
+
+[connection signal="body_entered" from="." to="." method="_on_Portal_toVilage_body_entered"]
+[connection signal="transitioned" from="FadeScene" to="." method="_on_FadeScene_transitioned"]
