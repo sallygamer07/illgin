@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://graphics/monsters/dogcat/dogcat_2.png" type="Texture" id=1]
+[ext_resource path="res://graphics/monsters/dogcat/dogcat_1.png" type="Texture" id=2]
+[ext_resource path="res://graphics/monsters/dogcat/dogcat_0.png" type="Texture" id=3]
+[ext_resource path="res://graphics/shadows/LargeShadow.png" type="Texture" id=4]
+[ext_resource path="res://graphics/quest_give.png" type="Texture" id=5]
+[ext_resource path="res://UI/QuestSystem/Quest.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Mobs/DogCat.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 16.0
+height = 0.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("questSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -52 ), Vector2( 0, -44 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 40.0
+height = 11.9073
+
+[node name="DogCat" type="KinematicBody2D" groups=[
+"NPC",
+]]
+position = Vector2( 0, -16 )
+script = ExtResource( 7 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 5.96047e-07, 28 )
+scale = Vector2( 1.25, 1.05 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Idle"
+frame = 4
+playing = true
+
+[node name="questSprite" type="Sprite" parent="."]
+position = Vector2( 0, -50.0597 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 16 )
+shape = SubResource( 2 )
+
+[node name="questSpriteAnim" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 3 )
+
+[node name="Collider" type="Area2D" parent="." groups=[
+"NPC",
+]]
+position = Vector2( 0, -16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2( 0, 24 )
+shape = SubResource( 4 )
+
+[node name="Quest" parent="." instance=ExtResource( 6 )]
+quest_name = "개냥이의 정체성"
+required_item = "개와 고양이의 차이점"
+required_amount = 1
+reward_item = "고양이 발바닥 부적"
+initial_text = "내가 개인지 고양이인지 잘 모르겠어.
+그러니 '개와 고양이의 차이점'이라는 책을 도서관에서 구해와줘."
+pending_text = "내가 원하는 건 '개와 고양이의 차이점'이라는 책이야."
+delivered_text = "정말 고마워! 답례로 부적을 하나 줄게."

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mysterious2.mp3-db0f3e8a958443cc588dce49c42e7a46.mp3str"
+
+[deps]
+
+source_file="res://audio/mysterious2.mp3"
+dest_files=[ "res://.import/mysterious2.mp3-db0f3e8a958443cc588dce49c42e7a46.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

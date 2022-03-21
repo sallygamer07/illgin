@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/snowforest.ogg-085621f0eb4e742d6334011a43a02bf2.oggstr"
+
+[deps]
+
+source_file="res://audio/snowforest.ogg"
+dest_files=[ "res://.import/snowforest.ogg-085621f0eb4e742d6334011a43a02bf2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MP_Woosh.mp3-74dd719d04437cfd48cb16323242a2c0.mp3str"
+
+[deps]
+
+source_file="res://audio/attack/MP_Woosh.mp3"
+dest_files=[ "res://.import/MP_Woosh.mp3-74dd719d04437cfd48cb16323242a2c0.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

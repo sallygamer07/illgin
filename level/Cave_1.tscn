@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://level/CaveGenerator.tscn" type="PackedScene" id=1]
+[ext_resource path="res://level/Cave_1.gd" type="Script" id=2]
+[ext_resource path="res://caveTileset.tres" type="TileSet" id=3]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/Camera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/Dialog_box.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://audio/blue-crave.mp3" type="AudioStream" id=8]
+[ext_resource path="res://graphics/tilemap/cave_bg.png" type="Texture" id=9]
+[ext_resource path="res://object/Portal_toVilage.tscn" type="PackedScene" id=10]
+
+[node name="Cave_1" type="Node2D"]
+script = ExtResource( 2 )
+spawn_range_x = [ 0, 100 ]
+spawn_range_y = [ 0, 100 ]
+
+[node name="Bg" type="Sprite" parent="."]
+position = Vector2( -2, 5 )
+scale = Vector2( 23.4506, 14.1378 )
+texture = ExtResource( 9 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="Floor" type="TileMap" parent="Navigation2D"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 4
+collision_mask = 3
+format = 1
+
+[node name="CaveGenerator" parent="Navigation2D/Floor" instance=ExtResource( 1 )]
+map_width = 100
+map_height = 100
+world_seed = "롱별이 바보"
+noise_octaves = 15
+noise_lac = 0.5
+noise_thr = 0.3
+spawn_range_x = [ -600, 600 ]
+spawn_range_y = [ -600, 600 ]
+
+[node name="Camera2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 0 )
+scale = Vector2( 0.6, 0.6 )
+zoom = Vector2( 0.6, 0.6 )
+
+[node name="BottomRight" parent="Camera2D/Limits" index="0"]
+position = Vector2( 1498.84, 909.82 )
+
+[node name="TopLeft" parent="Camera2D/Limits" index="1"]
+position = Vector2( -1504, -899.82 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 4 )]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
+
+[node name="Mobs" type="YSort" parent="YSort"]
+
+[node name="Portals" type="YSort" parent="YSort"]
+
+[node name="Portal_toVilage" parent="YSort/Portals" instance=ExtResource( 10 )]
+position = Vector2( -336, 696 )
+sceneToMove = "res://level/vilage_1.tscn"
+
+[node name="vilage_1Pos" type="Position2D" parent="."]
+position = Vector2( -256, 698.357 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 7 )]
+margin_left = 0.0
+margin_right = 0.0
+
+[node name="Dialog_box2" parent="CanvasLayer/UI" instance=ExtResource( 6 )]
+visible = false
+margin_top = -580.0
+margin_bottom = 5.0
+
+[node name="Main" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+bus = "Music"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color( 0.282353, 0.282353, 0.282353, 1 )
+
+[editable path="Camera2D"]

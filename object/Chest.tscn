@@ -1,0 +1,193 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://graphics/objects/chest/chest_0.png" type="Texture" id=1]
+[ext_resource path="res://graphics/objects/chest/chest_2.png" type="Texture" id=2]
+[ext_resource path="res://graphics/objects/chest/chest_1.png" type="Texture" id=3]
+[ext_resource path="res://graphics/objects/chest/chest_3.png" type="Texture" id=4]
+[ext_resource path="res://graphics/objects/chest/chest_4.png" type="Texture" id=5]
+[ext_resource path="res://object/Chest.gd" type="Script" id=6]
+[ext_resource path="res://graphics/shadows/LargeShadow.png" type="Texture" id=7]
+[ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Close",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Open",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Close" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Open" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "item_drop"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 56.0
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 25.8231, 10 )
+
+[node name="Chest" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 6 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 0.500001, 7.75 )
+scale = Vector2( 1.90625, 1.325 )
+texture = ExtResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -16 )
+frames = SubResource( 1 )
+animation = "Idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Close = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/open = SubResource( 4 )
+
+[node name="InPlayer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InPlayer"]
+position = Vector2( 0, -8 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 6 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -45.7789
+margin_top = -57.6856
+margin_right = 144.221
+margin_bottom = -25.6856
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 8 )
+text = "[E] 키를 눌러 열기"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="body_entered" from="InPlayer" to="." method="_on_InPlayer_body_entered"]
+[connection signal="body_exited" from="InPlayer" to="." method="_on_InPlayer_body_exited"]

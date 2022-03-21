@@ -1,0 +1,286 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://graphics/monsters/duggie/duggie_sprite.png" type="Texture" id=1]
+[ext_resource path="res://graphics/shadows/MediumShadow.png" type="Texture" id=2]
+[ext_resource path="res://Mobs/PlayerDetectionZone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Mobs/EnemyBlinkAnimation.tscn" type="PackedScene" id=4]
+[ext_resource path="res://RedColor.shader" type="Shader" id=5]
+[ext_resource path="res://Mobs/WanderController.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Mobs/Duggie.gd" type="Script" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 5 )
+shader_param/active = false
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 8.49656
+
+[sub_resource type="Animation" id=3]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "left_idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "left_walk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 4, 3 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "right_idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "right_walk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "left_idle"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "right_idle"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "down_idle"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "up_idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=15]
+blend_point_0/node = SubResource( 11 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 12 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 13 )
+blend_point_2/pos = Vector2( 0, 1 )
+blend_point_3/node = SubResource( 14 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "left_walk"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "right_walk"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "down_walk"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "up_walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=20]
+blend_point_0/node = SubResource( 16 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 17 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 18 )
+blend_point_2/pos = Vector2( 0, 1 )
+blend_point_3/node = SubResource( 19 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachine" id=23]
+states/Idle/node = SubResource( 15 )
+states/Idle/position = Vector2( 399, 165 )
+states/Walk/node = SubResource( 20 )
+states/Walk/position = Vector2( 627, 159 )
+transitions = [ "Idle", "Walk", SubResource( 21 ), "Walk", "Idle", SubResource( 22 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
+
+[sub_resource type="CapsuleShape2D" id=25]
+radius = 14.6734
+height = 0.0
+
+[sub_resource type="CircleShape2D" id=26]
+radius = 414.889
+
+[node name="Duggie" type="KinematicBody2D" groups=[
+"Enemy",
+]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource( 7 )
+WANDER_TARGET_RANGE = 30
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 0, 3.83058 )
+scale = Vector2( 1.69053, 1.47981 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 0, -8 )
+texture = ExtResource( 1 )
+hframes = 3
+vframes = 4
+frame = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3.19599 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/down_idle = SubResource( 3 )
+anims/down_walk = SubResource( 4 )
+anims/left_idle = SubResource( 5 )
+anims/left_walk = SubResource( 6 )
+anims/right_idle = SubResource( 7 )
+anims/right_walk = SubResource( 8 )
+anims/up_idle = SubResource( 9 )
+anims/up_walk = SubResource( 10 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 23 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 24 )
+parameters/Idle/blend_position = Vector2( 0.00310242, -0.610278 )
+parameters/Walk/blend_position = Vector2( 0.00103414, 0.0107067 )
+
+[node name="BlinkAnimationPlayer" parent="." instance=ExtResource( 4 )]
+
+[node name="DuggieArea" type="Area2D" parent="." groups=[
+"Duggie",
+"Enemy",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuggieArea"]
+position = Vector2( 0, -6.27557 )
+shape = SubResource( 25 )
+
+[node name="WanderController" parent="." instance=ExtResource( 6 )]
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+shape = SubResource( 26 )
+
+[node name="PathTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="area_entered" from="DuggieArea" to="." method="_on_DuggieArea_area_entered"]
+[connection signal="area_exited" from="DuggieArea" to="." method="_on_DuggieArea_area_exited"]
+[connection signal="timeout" from="PathTimer" to="." method="_on_PathTimer_timeout"]
+
+[editable path="PlayerDetectionZone"]

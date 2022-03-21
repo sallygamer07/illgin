@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/katarai.mp3-ee0eedf61f4546d4817e80ef44f92419.mp3str"
+
+[deps]
+
+source_file="res://audio/katarai.mp3"
+dest_files=[ "res://.import/katarai.mp3-ee0eedf61f4546d4817e80ef44f92419.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ballbound.mp3-3618efae6b1b2df8112a03e054f8e1eb.mp3str"
+
+[deps]
+
+source_file="res://audio/ballbound.mp3"
+dest_files=[ "res://.import/ballbound.mp3-3618efae6b1b2df8112a03e054f8e1eb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

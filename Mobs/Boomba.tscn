@@ -1,0 +1,335 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://graphics/monsters/Boomba/Boomba_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Mobs/Boomba.gd" type="Script" id=2]
+[ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=3]
+[ext_resource path="res://graphics/shadows/LargeShadow.png" type="Texture" id=4]
+[ext_resource path="res://Mobs/WanderController.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Mobs/PlayerDetectionZone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Mobs/EnemyBlinkAnimation.tscn" type="PackedScene" id=7]
+[ext_resource path="res://graphics/font/joystix.tres" type="DynamicFont" id=8]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 40.0
+height = 0.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "attack"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 2.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 3, 4, 5, 7 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 9, 7, 10, 7 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachine" id=14]
+states/attack/node = SubResource( 5 )
+states/attack/position = Vector2( 452, 157 )
+states/idle/node = SubResource( 6 )
+states/idle/position = Vector2( 349, 49 )
+states/walk/node = SubResource( 7 )
+states/walk/position = Vector2( 567, 49 )
+transitions = [ "idle", "walk", SubResource( 8 ), "walk", "idle", SubResource( 9 ), "idle", "attack", SubResource( 10 ), "attack", "idle", SubResource( 11 ), "walk", "attack", SubResource( 12 ), "attack", "walk", SubResource( 13 ) ]
+start_node = "idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=15]
+
+[sub_resource type="CapsuleShape2D" id=16]
+radius = 56.0
+height = 48.0
+
+[sub_resource type="CircleShape2D" id=17]
+radius = 520.0
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0, 0, 0, 0.556863 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.917647, 0.588235, 0.168627, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0, 0, 0, 0.556863 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.917647, 0.588235, 0.168627, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0, 0, 0, 0.556863 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.917647, 0.588235, 0.168627, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.580392, 0.0862745, 0.0862745, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0, 0, 0, 0.486275 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 0.619608, 0.207843, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id=24]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.917647, 0.588235, 0.168627, 1 )
+Button/colors/font_color_pressed = Color( 0.917647, 0.588235, 0.168627, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = ExtResource( 3 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource( 18 )
+Button/styles/normal = SubResource( 19 )
+Button/styles/pressed = SubResource( 20 )
+CheckButton/colors/font_color = Color( 1, 1, 1, 1 )
+CheckButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+CheckButton/colors/font_color_hover_pressed = Color( 0.917647, 0.588235, 0.168627, 1 )
+CheckButton/colors/font_color_pressed = Color( 0.917647, 0.588235, 0.168627, 1 )
+CheckButton/constants/check_vadjust = 0
+CheckButton/constants/hseparation = 4
+CheckButton/fonts/font = ExtResource( 3 )
+CheckButton/icons/off = null
+CheckButton/icons/off_disabled = null
+CheckButton/icons/on = null
+CheckButton/icons/on_disabled = null
+CheckButton/styles/disabled = null
+CheckButton/styles/focus = null
+CheckButton/styles/hover = null
+CheckButton/styles/hover_pressed = null
+CheckButton/styles/normal = null
+CheckButton/styles/pressed = null
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = ExtResource( 3 )
+Label/styles/normal = null
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = ExtResource( 8 )
+ProgressBar/styles/bg = SubResource( 21 )
+ProgressBar/styles/fg = SubResource( 22 )
+Tree/colors/custom_button_font_highlight = Color( 1, 1, 1, 1 )
+Tree/colors/drop_position_color = Color( 1, 0.3, 0.2, 1 )
+Tree/colors/font_color = Color( 1, 1, 1, 1 )
+Tree/colors/font_color_selected = Color( 1, 1, 1, 1 )
+Tree/colors/guide_color = Color( 0, 0, 0, 0.1 )
+Tree/colors/relationship_line_color = Color( 0.27, 0.27, 0.27, 1 )
+Tree/colors/title_button_color = Color( 0.88, 0.88, 0.88, 1 )
+Tree/constants/button_margin = 4
+Tree/constants/draw_guides = 1
+Tree/constants/draw_relationship_lines = 0
+Tree/constants/hseparation = 4
+Tree/constants/item_margin = 12
+Tree/constants/scroll_border = 4
+Tree/constants/scroll_speed = 12
+Tree/constants/vseparation = 4
+Tree/fonts/font = ExtResource( 3 )
+Tree/fonts/title_button_font = ExtResource( 3 )
+Tree/icons/arrow = null
+Tree/icons/arrow_collapsed = null
+Tree/icons/checked = null
+Tree/icons/select_arrow = null
+Tree/icons/unchecked = null
+Tree/icons/updown = null
+Tree/styles/bg = SubResource( 23 )
+Tree/styles/bg_focus = SubResource( 23 )
+Tree/styles/button_pressed = null
+Tree/styles/cursor = null
+Tree/styles/cursor_unfocused = null
+Tree/styles/custom_button = null
+Tree/styles/custom_button_hover = null
+Tree/styles/custom_button_pressed = null
+Tree/styles/selected = null
+Tree/styles/selected_focus = null
+Tree/styles/title_button_hover = null
+Tree/styles/title_button_normal = null
+Tree/styles/title_button_pressed = null
+
+[node name="Boomba" type="KinematicBody2D" groups=[
+"Enemy",
+]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 0, 24 )
+scale = Vector2( 3.625, 3.25 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -64 )
+texture = ExtResource( 1 )
+hframes = 11
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -16 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/walk = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 14 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 15 )
+
+[node name="BlinkAnimationPlayer" parent="." instance=ExtResource( 7 )]
+
+[node name="Boss_Area" type="Area2D" parent="." groups=[
+"Enemy",
+]]
+
+[node name="collision" type="CollisionShape2D" parent="Boss_Area"]
+position = Vector2( 0, -48 )
+shape = SubResource( 16 )
+
+[node name="WanderController" parent="." instance=ExtResource( 5 )]
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+position = Vector2( 0, -40 )
+shape = SubResource( 17 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -120.0
+margin_top = -224.0
+margin_right = 120.0
+margin_bottom = -200.0
+theme = SubResource( 24 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ProgressBar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = -12.0
+margin_right = 76.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.8, 0.8 )
+text = "300/600"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="area_entered" from="Boss_Area" to="." method="_on_Boss_Area_area_entered"]
+
+[editable path="PlayerDetectionZone"]

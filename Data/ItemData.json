@@ -1,0 +1,113 @@
+{
+  "하급 회복 포션": {
+    "ItemCategory": "Consumable",
+    "AddHealth": 15,
+    "AddMana": 0,
+    "StackSize": 99,
+    "Description": "HP를 15 회복시켜줍니다."
+  },
+  "하급 마나 포션": {
+    "ItemCategory": "Consumable",
+    "AddHealth": 0,
+    "AddMana": 15,
+    "StackSize": 99,
+    "Description": "마나를 15 회복시켜줍니다."
+  },
+  "싱싱한 꽃": {
+    "ItemCategory": "Resource",
+    "StackSize": 99,
+    "Description": "어디에서나 흔히 볼 수 있는 하얀색 들꽃이다."
+  },
+  "개와 고양이의 차이점": {
+    "ItemCategory": "Resource",
+    "StackSize": 1,
+    "Description": "개와 고양이의 차이점을 서술한 학술적인 책."
+  },
+  "LPS의 기원": {
+    "ItemCategory": "Resource",
+    "StackSize": 1,
+    "Description": "LPS의 기원을 탐구하는 과정이 담겨있는 책."
+  },
+  "초보자를 위한 153가지 요리 레시피": {
+    "ItemCategory": "Resource",
+    "StackSize": 1,
+    "Description": "초보자를 위한 요리 레시피가 153가지 담겨있는 책."
+  },
+  "강아지는 멍멍": {
+    "ItemCategory": "Resource",
+    "StackSize": 1,
+    "Description": "소풍 가는 강아지의 이야기가 담긴 동화책."
+  },
+  "평범한 검": {
+    "ItemCategory": "Sword",
+    "ItemAttack": 3,
+    "ItemSpeed": 0.75,
+    "StackSize": 1,
+    "Description": "이거 들고 나섰다간 바로 발림."
+  },
+  "말라비틀어진 나뭇가지": {
+    "ItemCategory": "Wand",
+    "ItemAttack": 2,
+    "ItemSpeed": 0.9,
+    "StackSize": 1,
+    "Description": "땔감으로 적당한 마른 나뭇가지"
+  },
+  "고깔색 레이피어": {
+    "ItemCategory": "Sword",
+    "ItemAttack": 5,
+    "ItemSpeed": 0.35,
+    "StackSize": 1,
+    "Description": "슉, 수슉, 슈, 수슉 슈슈슉이 가능함"
+  },
+  "정육점 창": {
+    "ItemCategory": "Sword",
+    "ItemAttack": 8,
+    "ItemSpeed": 0.8,
+    "StackSize": 1,
+    "Description": "고기 썰기 좋은 도구."
+  },
+  "녹슨 삼지창": {
+    "ItemCategory": "Sword",
+    "ItemAttack": 10,
+    "ItemSpeed": 0.5,
+    "StackSize": 1,
+    "Description": "아쿠아맨이 쓰다 버림. 내가 봄."
+  },
+  "나무꾼이 떨어뜨린 도끼": {
+    "ItemCategory": "Sword",
+    "ItemAttack": 14,
+    "ItemSpeed": 0.75,
+    "StackSize": 1,
+    "Description": "나무꾼이 호수에 빠트린 도끼."
+  },
+  "냥냥이의 장난감 낚싯대": {
+    "ItemCategory": "Wand",
+    "ItemAttack": 4,
+    "ItemSpeed": 0.6,
+    "StackSize": 1,
+    "Description": "낚싯대도 때론 좋은 무기가 된다."
+  },
+  "노인과 지팡이": {
+    "ItemCategory": "Wand",
+    "ItemAttack": 7,
+    "ItemSpeed": 0.9,
+    "StackSize": 1,
+    "Description": "단단한 지팡이. 젊은이 뒤통수 갈기기 좋음."
+  },
+  "초심자용 활": {
+    "ItemCategory": "Bow",
+    "ItemAttack": 4,
+    "ItemSpeed": 0.6,
+    "StackSize": 1,
+    "Description": "초보자들이 애용하는 연습용 활."
+  },
+  "후라이드 치킨": {
+    "ItemCategory": "Consumable",
+    "AddHealth": 10,
+    "AddMana": 0,
+    "StackSize": 99,
+    "Description": "맛있게 튀겨진 후라이드 치킨 한 마리. 섭취 시 체력을 10 회복한다."
+  }
+}
+
+//Resource, Consumable, Sword, Wand, Bow

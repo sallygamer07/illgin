@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=1]
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=2]
+[ext_resource path="res://level/GameOver.gd" type="Script" id=3]
+[ext_resource path="res://UI/LoadScene.tscn" type="PackedScene" id=4]
+[ext_resource path="res://audio/sousou3.mp3" type="AudioStream" id=5]
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = -43.0
+margin_right = 92.0
+margin_bottom = -11.0
+custom_fonts/font = ExtResource( 1 )
+text = "GAME OVER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -221.0
+margin_top = 12.0
+margin_right = 250.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 1 )
+text = "빨강모자는 심부름을 영원히 할 수 없게 되었다..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="."]
+margin_left = 464.0
+margin_top = 536.0
+margin_right = 632.0
+margin_bottom = 574.0
+theme = ExtResource( 2 )
+text = "새로 시작하기"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadGame" type="Button" parent="."]
+margin_left = 648.0
+margin_top = 536.0
+margin_right = 816.0
+margin_bottom = 574.0
+theme = ExtResource( 2 )
+text = "게임 불러오기"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Button" parent="."]
+margin_left = 832.0
+margin_top = 536.0
+margin_right = 1000.0
+margin_bottom = 574.0
+theme = ExtResource( 2 )
+text = "메인 메뉴로"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadScene" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="gameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Music"
+
+[connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="LoadGame" to="." method="_on_LoadGame_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]

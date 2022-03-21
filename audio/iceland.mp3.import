@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/iceland.mp3-13023ddd6d1c032b33319c0ae9fe2a46.mp3str"
+
+[deps]
+
+source_file="res://audio/iceland.mp3"
+dest_files=[ "res://.import/iceland.mp3-13023ddd6d1c032b33319c0ae9fe2a46.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

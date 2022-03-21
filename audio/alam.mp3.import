@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/alam.mp3-8d25b510fc566c800f791fdd002bd9cf.mp3str"
+
+[deps]
+
+source_file="res://audio/alam.mp3"
+dest_files=[ "res://.import/alam.mp3-8d25b510fc566c800f791fdd002bd9cf.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
