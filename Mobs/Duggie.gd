@@ -64,31 +64,30 @@ func _physics_process(_delta):
 				update_wander()
 			
 		CHASE:
-			if Global.player != null:
-				if Global.player.data["level"].find("Cave") != -1:
-					target = playerDetectionZone.player
-					if path:
-						var vector_to_next_point : Vector2 = path[0] - global_position
-						var distance_to_next_point : float = vector_to_next_point.length()
-						if distance_to_next_point < 1:
-							path.remove(0)
-							if not path:
-								return
-								
-						var dir = vector_to_next_point
-						anim["parameters/playback"].travel("Walk")
-						velocity = velocity.move_toward(dir * speed, acc * _delta)
-					else:
-						state = IDLE
-						
+			if Global.player.data["level"].find("Cave") != -1:
+				target = playerDetectionZone.player
+				if path:
+					var vector_to_next_point : Vector2 = path[0] - global_position
+					var distance_to_next_point : float = vector_to_next_point.length()
+					if distance_to_next_point < 1:
+						path.remove(0)
+						if not path:
+							return
+							
+					var dir = vector_to_next_point
+					anim["parameters/playback"].travel("Walk")
+					velocity = velocity.move_toward(dir * speed, acc * _delta)
 				else:
-					var player = playerDetectionZone.player
-					if player != null:
-						anim["parameters/playback"].travel("Walk")
-						var dir = (player.global_position - global_position).normalized()
-						velocity = velocity.move_toward(dir * speed, acc * _delta)
-					else:
-						state = IDLE
+					state = IDLE
+					
+			else:
+				var player = playerDetectionZone.player
+				if player != null:
+					anim["parameters/playback"].travel("Walk")
+					var dir = (player.global_position - global_position).normalized()
+					velocity = velocity.move_toward(dir * speed, acc * _delta)
+				else:
+					state = IDLE
 
 	if velocity == Vector2.ZERO:
 		anim.get("parameters/playback").travel("Idle")
