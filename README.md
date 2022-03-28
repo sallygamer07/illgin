@@ -1,4 +1,4 @@
-# illgin
+# READ ME
 
 It is an Action RPG.
 
