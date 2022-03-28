@@ -28,9 +28,7 @@ func _physics_process(_delta):
 		match state:
 			states.IDLE:
 				direction = Vector2.ZERO
-				#anim["parameters/playback"].travel("Idle")
 			states.WALK:
-				#anim["parameters/playback"].travel("Walk")
 				direction = to_player.normalized()
 
 		if distance > go_range:
