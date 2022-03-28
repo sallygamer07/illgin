@@ -1,5 +1,10 @@
-extends RigidBody2D
+extends KinematicBody2D
+class_name WoodenBox
 
 
-func _integrate_forces(_state):
-	rotation_degrees = 0
+var vel = Vector2.ZERO
+
+	
+func slide(vector):
+	vel = vector
+	vel = move_and_slide(vel)

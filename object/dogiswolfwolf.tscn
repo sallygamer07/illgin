@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://graphics/objects/books/강아지는 멍멍.png" type="Texture" id=1]
+[ext_resource path="res://graphics/objects/강아지는 멍멍.png" type="Texture" id=1]
 [ext_resource path="res://object/low_HealthPotion.gd" type="Script" id=2]
 [ext_resource path="res://audio/pick.mp3" type="AudioStream" id=3]
 

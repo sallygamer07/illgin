@@ -20,5 +20,11 @@ func on_Area2D_body_exited(body):
 			body.house = null
 			
 func enter():
+	Global.from_level = get_parent().get_parent().get_parent().get_parent().name
+	Global.player.save_def()
+	Global.player_wand.save_def()
+	SaveFile.save_file(0)
+	SaveFile.load_file(0)
+	Global.loaded = 0
 	SceneChanger.goto_scene(inside_path, get_parent().get_parent().get_parent().get_parent())
 	

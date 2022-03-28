@@ -60,3 +60,5 @@ shape = SubResource( 5 )
 [node name="house" type="Node" parent="."]
 script = ExtResource( 3 )
 inside_path = "res://level/Inside_1.tscn"
+
+[node name="Main" type="AudioStreamPlayer" parent="."]
