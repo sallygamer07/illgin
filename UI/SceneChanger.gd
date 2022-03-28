@@ -3,6 +3,8 @@ extends Node
 export var max_load_time = 10000
 
 
+
+
 func goto_scene(path, current_scene):
 	var loader = ResourceLoader.load_interactive(path)
 	
@@ -21,6 +23,7 @@ func goto_scene(path, current_scene):
 		if err == ERR_FILE_EOF:
 			var resource = loader.get_resource()
 			get_tree().get_root().call_deferred("add_child", resource.instance())
+			get_tree().get_root().remove_child(current_scene)
 			current_scene.queue_free()
 			loading_bar.queue_free()
 			break

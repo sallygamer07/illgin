@@ -1,6 +1,5 @@
 extends Control
 
-#Field Boss 출몰.
 
 func _ready():
 	Global.loaded = -1
@@ -38,7 +37,7 @@ func _on_Settings_pressed():
 
 
 func _on_FadeScene_transitioned():
-	SceneChanger.goto_scene("res://level/Level_1.tscn", self)
+	SceneChanger.goto_scene("res://UI/Intro.tscn", self)
 
 
 func _on_VisibilityNotifier2D_screen_entered():

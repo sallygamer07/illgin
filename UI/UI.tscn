@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://DefaultTheme.tres" type="Theme" id=1]
 [ext_resource path="res://graphics/font/joystix.tres" type="DynamicFont" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=21]
 [ext_resource path="res://UI/WeaponShopUI.tscn" type="PackedScene" id=22]
 [ext_resource path="res://player/CollectItemLabel.tscn" type="PackedScene" id=23]
+[ext_resource path="res://UI/Map.tscn" type="PackedScene" id=24]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.556863 )
@@ -525,21 +526,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NoManaWarning" type="Label" parent="."]
-visible = false
-margin_left = 432.0
-margin_top = 24.0
-margin_right = 634.0
-margin_bottom = 56.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = " 마나가 부족합니다. "
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="NoEmptySlot" type="Label" parent="."]
 visible = false
 margin_left = 393.0
@@ -588,6 +574,9 @@ __meta__ = {
 visible = false
 
 [node name="SkillTree" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[node name="Map" parent="." instance=ExtResource( 24 )]
 visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource( 7 )]

@@ -1,0 +1,106 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://graphics/mapIcon/level_1_map.png" type="Texture" id=1]
+[ext_resource path="res://graphics/shadows/LargeShadow.png" type="Texture" id=2]
+[ext_resource path="res://graphics/mapIcon/level_2_map.png" type="Texture" id=3]
+[ext_resource path="res://graphics/mapIcon/level_3_map.png" type="Texture" id=4]
+[ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=5]
+
+[node name="Map" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.8, 0.768627, 0.717647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level_1" type="TextureButton" parent="."]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Level_1"]
+show_behind_parent = true
+position = Vector2( 32, 56 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Level_1"]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 76.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 5 )
+text = "녹빛 평원"
+align = 1
+valign = 1
+
+[node name="Level_2" type="TextureButton" parent="."]
+margin_left = 256.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Level_2"]
+show_behind_parent = true
+position = Vector2( 32, 56 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 2 )
+
+[node name="Label2" type="Label" parent="Level_2"]
+margin_left = -32.0
+margin_top = -16.0
+margin_right = 106.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 5 )
+text = "먼지더미 황야"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level_3" type="TextureButton" parent="."]
+margin_left = 128.0
+margin_top = 160.0
+margin_right = 192.0
+margin_bottom = 224.0
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Level_3"]
+show_behind_parent = true
+position = Vector2( 32, 56 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 2 )
+
+[node name="Label3" type="Label" parent="Level_3"]
+margin_left = -40.0
+margin_top = -16.0
+margin_right = 98.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 5 )
+text = "갈대 숲"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

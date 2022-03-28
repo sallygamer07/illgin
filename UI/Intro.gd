@@ -2,6 +2,7 @@ extends Node
 
 onready var texrect = $TextureRect
 onready var label = $Label
+onready var main = $Main
 
 var intro_path = "res://graphics/intro/"
 
@@ -24,13 +25,20 @@ func _intro():
 		texrect.texture = texture
 		label.text = dialog[dialog_index]
 		dialog_index += 1
-		yield(get_tree().create_timer(5), "timeout")
+		var time_r = Timer.new()
+		add_child(time_r)
+		time_r.start(5)
+		yield(time_r, "timeout")
 		if i == 3:
-			var _intro_change = get_tree().change_scene("res://level/Level_1.tscn")
+			_on_FadeScene_transitioned()
+
+func _process(_delta):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), GlobalSettings.music_volume)
 
 
 func _on_Skip_pressed():
+	main.stop()
 	$FadeScene.transition()
 	
 func _on_FadeScene_transitioned():
-	var _error = get_tree().change_scene("res://level/Level_1.tscn")
+	SceneChanger.goto_scene("res://level/Level_1.tscn", self)

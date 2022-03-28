@@ -37,10 +37,5 @@ func on_quest_ended(quest_name_):
 			label.queue_free()
 			
 func set_player_level():
-	if Global.player != null:
-		if Global.player.data["level"] == "Level_1":
-			$Title.text = "녹빛 평원" + message
-		elif Global.player.data["level"] == "vilage_1":
-			$Title.text = "사거리 마을" + message
-		elif Global.player.data["level"] == "Level_2":
-			$Title.text = "먼지더미 황야" + message
+	if Global.node_creation_parent != null:
+		$Title.text = Global.node_creation_parent.level_name + message

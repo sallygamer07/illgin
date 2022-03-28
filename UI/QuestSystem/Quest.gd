@@ -24,11 +24,11 @@ func process() -> String:
 				if getting_item >= required_amount:
 					for item in PlayerInventory.hotbar:
 						if PlayerInventory.hotbar[item].has(getting_item):
-							var _err_ = PlayerInventory.remove_item_quest(required_item, required_amount, true)
+							var _err_ = PlayerInventory.remove_item_quest(required_item, required_amount)
 							var _quest = PlayerInventory.quest_succ()
 					for _item in PlayerInventory.inventory:
 						if PlayerInventory.inventory[_item].has(getting_item):
-							var _err_ = PlayerInventory.remove_item_quest(required_item, required_amount, false)
+							var _err_ = PlayerInventory.remove_item_quest(required_item, required_amount)
 							var _quest_ = PlayerInventory.quest_succ()
 					var _er_r_ = Quest.change_status(quest_name, Quest.STATUS.COMPLETE)
 					var _e_rr_ = Quest.remove_quest(quest_name)

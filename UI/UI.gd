@@ -48,7 +48,6 @@ func _process(_delta):
 	
 	
 		shop()
-		mana_empty()
 		pain()
 		set_skill_lock()
 		show_skillbar()
@@ -127,6 +126,9 @@ func _input(event):
 	if event.is_action_pressed("skill"):
 		$SkillTree.visible = !$SkillTree.visible
 		
+	if event.is_action_pressed("map"):
+		$Map.visible = !$Map.visible
+		
 	if event.is_action_pressed("CharacterSheet"):
 		character_sheet_visible = !character_sheet_visible
 		if character_sheet_visible == true:
@@ -174,12 +176,6 @@ func player_unlock():
 	$Box.visible = true
 	show_skillbar()
 			
-func mana_empty():
-	if Global.player_wand.mana_empty == true:
-		$NoManaWarning.show()
-		
-	else:
-		$NoManaWarning.hide()
 
 func noEmptySlot_label():
 	$NoEmptySlot.show()

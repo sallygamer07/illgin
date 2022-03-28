@@ -33,6 +33,7 @@ func _process(_delta):
 		$HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/HP/Value.text = str(Global.player.max_health)
 		$HBoxContainer/VBoxContainer/Stats/DerivedStats/VBoxContainer/Mana/Value.text = str(Global.player.max_mana)
 
+
 func set_stat_point_label():
 	node_stat_points.set_text("포인트 : " + str(Global.player.stat_point))
 

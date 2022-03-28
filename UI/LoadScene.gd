@@ -1,5 +1,7 @@
 extends Control
 
+var to_level
+
 func _ready():
 	$Slot1/delete.hide()
 	$Slot2/delete2.hide()
@@ -63,6 +65,7 @@ func _process(_delta):
 		$Slot6/delete6.hide()
 		
 func change_load_scene():
+	to_level = SaveFile._player_data["level"]
 	get_parent().get_node("Main").stop()
 	$FadeScene.transition()
 
@@ -129,4 +132,4 @@ func _on_delete6_pressed():
 
 
 func _on_FadeScene_transitioned():
-	SceneChanger.goto_scene("res://level/" + SaveFile._player_data["level"] + ".tscn", get_parent())
+	SceneChanger.goto_scene("res://level/" + to_level + ".tscn", get_parent())

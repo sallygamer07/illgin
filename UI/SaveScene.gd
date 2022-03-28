@@ -45,48 +45,37 @@ func _ready():
 	else:
 		$Slot6/Label6.text = "빈 슬롯"
 
-
-func _on_SaveSlot1_pressed():
+func saveslot(slot_num):
 	Global.player.save_def()
 	Global.player_wand.save_def()
-	SaveFile.save_file(1)
-	SaveFile.load_file(1)
+	SaveFile.save_file(slot_num)
+	SaveFile.load_file(slot_num)
+	Global.player.load_def()
+	Global.player_wand.load_def()
+
+func _on_SaveSlot1_pressed():
+	saveslot(1)
 	$Slot1/Label.text = "Level : " + str(SaveFile._player_data["player_level"])
 	
 
 func _on_SaveSlot2_pressed():
-	Global.player.save_def()
-	Global.player_wand.save_def()
-	SaveFile.save_file(2)
-	SaveFile.load_file(2)
+	saveslot(2)
 	$Slot2/Label2.text = "Level : " + str(SaveFile._player_data["player_level"])
 	
 func _on_SaveSlot3_pressed():
-	Global.player.save_def()
-	Global.player_wand.save_def()
-	SaveFile.save_file(3)
-	SaveFile.load_file(3)
+	saveslot(3)
 	$Slot3/Label3.text = "Level : " + str(SaveFile._player_data["player_level"])
 
 func _on_SaveSlot4_pressed():
-	Global.player.save_def()
-	Global.player_wand.save_def()
-	SaveFile.save_file(4)
-	SaveFile.load_file(4)
+	saveslot(4)
 	$Slot4/Label4.text = "Level : " + str(SaveFile._player_data["player_level"])
 
 func _on_SaveSlot5_pressed():
-	Global.player.save_def()
-	Global.player_wand.save_def()
-	SaveFile.save_file(5)
-	SaveFile.load_file(5)
+	saveslot(5)
 	$Slot5/Label5.text = "Level : " + str(SaveFile._player_data["player_level"])
 
 func _on_SaveSlot6_pressed():
-	Global.player.save_def()
-	Global.player_wand.save_def()
-	SaveFile.save_file(6)
-	SaveFile.load_file(6)
+	saveslot(6)
 	$Slot6/Label6.text = "Level : " + str(SaveFile._player_data["player_level"])
 
 
