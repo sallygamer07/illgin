@@ -10,7 +10,7 @@ onready var pet = get_parent()
 onready var anim = get_parent().get_node("AnimationTree")
 onready var player
 
-var go_range = 100
+var go_range = 50
 var speed = 200
 
 var state = states.IDLE
