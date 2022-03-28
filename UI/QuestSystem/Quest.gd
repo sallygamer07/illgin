@@ -26,6 +26,7 @@ func process() -> String:
 						if PlayerInventory.hotbar[item].has(getting_item):
 							var _err_ = PlayerInventory.remove_item_quest(required_item, required_amount)
 							var _quest = PlayerInventory.quest_succ()
+							get_node("../../../../CanvasLayer/UI/HotBar").initialize_hotbar()
 					for _item in PlayerInventory.inventory:
 						if PlayerInventory.inventory[_item].has(getting_item):
 							var _err_ = PlayerInventory.remove_item_quest(required_item, required_amount)
