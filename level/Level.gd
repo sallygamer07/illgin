@@ -4,6 +4,8 @@ class_name Level
 export(Array) var spawn_range_x = [-640, 1408]
 export(Array) var spawn_range_y = [-384, 960]
 
+export(String) var level_name = ""
+
 onready var navigation = get_node("Navigation2D")
 
 var player

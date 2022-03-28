@@ -13,6 +13,7 @@
 script = ExtResource( 1 )
 spawn_range_x = [ 94, 1864 ]
 spawn_range_y = [ 64, 1864 ]
+level_name = "갈대 숲"
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 

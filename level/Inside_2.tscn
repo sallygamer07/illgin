@@ -1,13 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://roomtileset.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://level/inside.gd" type="Script" id=4]
+[ext_resource path="res://object/WoodenBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/FadeScene.tscn" type="PackedScene" id=7]
+[ext_resource path="res://player/SitArea.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 13.513, 14.5067 )
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 48, 24 )
 
 [node name="Inside_2" type="Node2D"]
@@ -53,20 +58,132 @@ cell_size = Vector2( 24, 24 )
 cell_tile_origin = 1
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -327661, 8, 0, -327658, 8, 0, -327655, 8, 0, -65509, 15, 0, 19, 9, 0, 20, 9, 0, 27, 12, 0, 65549, 9, 0, 65550, 9, 0, 65551, 9, 0, 65552, 9, 0, 65553, 9, 0, 65563, 11, 0, 65564, 9, 0, 131085, 12, 0, 131089, 16, 0, 131090, 16, 0, 131097, 16, 0, 262161, 18, 0, 262162, 10, 0, 262167, 14, 0, 262168, 18, 0, 262169, 10, 0, 327696, 14, 0, 327700, 15, 0, 327706, 15, 0, 393240, 17, 0, 655362, 13, 0, 720898, 9, 0, 720899, 9, 0, 720904, 9, 0, 786434, 9, 0, 786435, 9, 0, 786436, 9, 0, 786437, 12, 0, 786438, 12, 0, 786439, 9, 0, 786440, 9, 0, 1114114, 9, 0, 1114115, 9, 0, 1114121, 16, 0, 1114122, 15, 0, 1179650, 12, 0, 1179651, 9, 0, 1179655, 11, 0, 1179656, 9, 0, 1245190, 9, 0, 1245191, 11, 0, 1310726, 10, 0, 1310727, 9, 0, 1376258, 13, 0, 1376259, 13, 0 )
+tile_data = PoolIntArray( -327661, 8, 0, -327658, 8, 0, -327655, 8, 0, -65509, 15, 0, 27, 12, 0, 65563, 11, 0, 131085, 12, 0, 131089, 16, 0, 131090, 16, 0, 131097, 16, 0, 262161, 18, 0, 262162, 10, 0, 262167, 14, 0, 262168, 18, 0, 262169, 10, 0, 327696, 14, 0, 327700, 15, 0, 327706, 15, 0, 393240, 17, 0, 655362, 13, 0, 786437, 12, 0, 786438, 12, 0, 1114121, 16, 0, 1114122, 15, 0, 1179650, 12, 0, 1179655, 11, 0, 1245191, 11, 0, 1310726, 10, 0, 1376258, 13, 0, 1376259, 13, 0 )
+
+[node name="Boxes" type="YSort" parent="YSort"]
+
+[node name="WoodenBox" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 150, 467 )
+
+[node name="WoodenBox2" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 150, 440 )
+
+[node name="WoodenBox3" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 104, 424 )
+
+[node name="WoodenBox4" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 80, 424 )
+
+[node name="WoodenBox5" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 48, 470.69 )
+
+[node name="WoodenBox6" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 688, 294 )
+
+[node name="WoodenBox7" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 688, 264 )
+
+[node name="WoodenBox8" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 681.4, 230 )
+
+[node name="WoodenBox17" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 111, 64 )
+
+[node name="WoodenBox18" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 111, 64 )
+
+[node name="WoodenBox19" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 64, 300 )
+
+[node name="WoodenBox20" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 96, 294 )
+
+[node name="WoodenBox21" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 182, 282 )
+
+[node name="WoodenBox22" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 208, 248 )
+
+[node name="WoodenBox23" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 112, 168 )
+
+[node name="WoodenBox24" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 464, 16 )
+
+[node name="WoodenBox25" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 492, 16 )
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="SitArea" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 393, 135 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea2" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 486.83, 135 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea2" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea3" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 559.668, 111.692 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea3" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea4" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 631.182, 136 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea4" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea5" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 609.491, 64 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea5" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea6" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 417.274, 64 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea6" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea7" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 442.313, 64 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea7" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea8" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 226, 424 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea8" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea9" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 249, 424 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea9" index="0"]
+shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 496, 584 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="inside" type="Node" parent="."]
 script = ExtResource( 4 )
 outside_path = "res://level/vilage_1.tscn"
+level_name = "빨강지붕 집"
 
-[node name="enterPos" type="Position2D" parent="."]
-position = Vector2( 496.43, 568 )
+[node name="vilage_1Pos" type="Position2D" parent="."]
+position = Vector2( 496.43, 544 )
+
+[node name="Main" type="AudioStreamPlayer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -82,3 +199,12 @@ color = Color( 0.184314, 0.184314, 0.184314, 1 )
 [connection signal="transitioned" from="FadeScene" to="inside" method="_on_FadeScene_transitioned"]
 
 [editable path="Camera2D"]
+[editable path="Areas/SitArea"]
+[editable path="Areas/SitArea2"]
+[editable path="Areas/SitArea3"]
+[editable path="Areas/SitArea4"]
+[editable path="Areas/SitArea5"]
+[editable path="Areas/SitArea6"]
+[editable path="Areas/SitArea7"]
+[editable path="Areas/SitArea8"]
+[editable path="Areas/SitArea9"]

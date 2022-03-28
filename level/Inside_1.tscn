@@ -1,13 +1,24 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://roomtileset.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://level/inside.gd" type="Script" id=4]
+[ext_resource path="res://object/WoodenBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/FadeScene.tscn" type="PackedScene" id=7]
+[ext_resource path="res://player/SitArea.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 13.1854, 16 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 13.2634, 16.2713 )
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 48, 24 )
 
 [node name="Inside_1" type="Node2D"]
@@ -53,20 +64,143 @@ cell_size = Vector2( 24, 24 )
 cell_tile_origin = 1
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( 65549, 9, 0, 65550, 9, 0, 65551, 9, 0, 65552, 9, 0, 65553, 9, 0, 65563, 11, 0, 65564, 9, 0, 65565, 9, 0, 65566, 9, 0, 131074, 8, 0, 131076, 9, 0, 131077, 9, 0, 131078, 8, 0, 131085, 12, 0, 131089, 16, 0, 131090, 16, 0, 131097, 16, 0, 131102, 9, 0, 196638, 9, 0, 262152, 13, 0, 262161, 18, 0, 262162, 10, 0, 262167, 14, 0, 262168, 18, 0, 262169, 10, 0, 262174, 13, 0, 327696, 14, 0, 327700, 15, 0, 327706, 15, 0, 393240, 17, 0, 589862, 9, 0, 589863, 9, 0, 589864, 9, 0, 655362, 13, 0, 655398, 11, 0, 655400, 9, 0, 720898, 9, 0, 720899, 9, 0, 720904, 9, 0, 720936, 11, 0, 786434, 9, 0, 786435, 9, 0, 786436, 9, 0, 786437, 12, 0, 786438, 12, 0, 786439, 9, 0, 786440, 9, 0, 786472, 11, 0, 852008, 12, 0, 1114114, 9, 0, 1114115, 9, 0, 1114121, 16, 0, 1114122, 15, 0, 1179650, 12, 0, 1179651, 9, 0, 1179655, 11, 0, 1179656, 9, 0, 1245190, 9, 0, 1245191, 11, 0, 1310726, 10, 0, 1310727, 9, 0, 1376258, 13, 0, 1376259, 13, 0 )
+tile_data = PoolIntArray( 65563, 11, 0, 131074, 8, 0, 131078, 8, 0, 131085, 12, 0, 131089, 16, 0, 131090, 16, 0, 131097, 16, 0, 262152, 13, 0, 262161, 18, 0, 262162, 10, 0, 262167, 14, 0, 262168, 18, 0, 262169, 10, 0, 262174, 13, 0, 327696, 14, 0, 327700, 15, 0, 327706, 15, 0, 393240, 17, 0, 655362, 13, 0, 655398, 11, 0, 720936, 11, 0, 786437, 12, 0, 786438, 12, 0, 786472, 11, 0, 852008, 12, 0, 1179650, 12, 0, 1179655, 11, 0, 1245191, 11, 0, 1310726, 10, 0, 1376258, 13, 0, 1376259, 13, 0 )
+
+[node name="Boxes" type="YSort" parent="YSort"]
+
+[node name="WoodenBox" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 150, 467 )
+
+[node name="WoodenBox2" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 150, 440 )
+
+[node name="WoodenBox3" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 45, 424 )
+
+[node name="WoodenBox4" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 80, 424 )
+
+[node name="WoodenBox5" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 68, 472 )
+
+[node name="WoodenBox6" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 912, 230 )
+
+[node name="WoodenBox7" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 939, 230 )
+
+[node name="WoodenBox8" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 968, 230 )
+
+[node name="WoodenBox9" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 880, 335 )
+
+[node name="WoodenBox10" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 971, 48 )
+
+[node name="WoodenBox11" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 971, 80 )
+
+[node name="WoodenBox12" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 971, 112 )
+
+[node name="WoodenBox13" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 939, 46 )
+
+[node name="WoodenBox14" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 939, 80 )
+
+[node name="WoodenBox15" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 939, 112 )
+
+[node name="WoodenBox16" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 840, 60 )
+
+[node name="WoodenBox17" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 111, 64 )
+
+[node name="WoodenBox18" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 111, 64 )
+
+[node name="WoodenBox19" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 64, 300 )
+
+[node name="WoodenBox20" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 96, 294 )
+
+[node name="WoodenBox21" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 182, 282 )
+
+[node name="WoodenBox22" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 208, 248 )
+
+[node name="WoodenBox23" parent="YSort/Boxes" instance=ExtResource( 5 )]
+position = Vector2( 112, 168 )
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="SitArea" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 393, 136 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea2" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 488, 135 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea2" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea3" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 416, 64 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea3" index="0"]
+shape = SubResource( 2 )
+
+[node name="SitArea4" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 440, 64 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea4" index="0"]
+position = Vector2( 5, 0 )
+shape = SubResource( 3 )
+
+[node name="SitArea5" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 559.913, 112 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea5" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea6" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 632, 136 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea6" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea7" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 608, 64 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea7" index="0"]
+shape = SubResource( 1 )
+
+[node name="SitArea8" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 608, 64 )
+
+[node name="CollisionShape2D" parent="Areas/SitArea8" index="0"]
+shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 496, 584 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="inside" type="Node" parent="."]
 script = ExtResource( 4 )
 outside_path = "res://level/vilage_1.tscn"
+level_name = "파란지붕 집"
 
-[node name="enterPos" type="Position2D" parent="."]
-position = Vector2( 496.43, 568 )
+[node name="vilage_1Pos" type="Position2D" parent="."]
+position = Vector2( 496, 544 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -79,6 +213,16 @@ margin_right = 0.0
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.184314, 0.184314, 0.184314, 1 )
 
+[node name="Main" type="AudioStreamPlayer" parent="."]
+
 [connection signal="transitioned" from="FadeScene" to="inside" method="_on_FadeScene_transitioned"]
 
 [editable path="Camera2D"]
+[editable path="Areas/SitArea"]
+[editable path="Areas/SitArea2"]
+[editable path="Areas/SitArea3"]
+[editable path="Areas/SitArea4"]
+[editable path="Areas/SitArea5"]
+[editable path="Areas/SitArea6"]
+[editable path="Areas/SitArea7"]
+[editable path="Areas/SitArea8"]

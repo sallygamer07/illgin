@@ -1,0 +1,507 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/Camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://level/vilage_1.gd" type="Script" id=3]
+[ext_resource path="res://graphics/tilemap/vilageMap.png" type="Texture" id=4]
+[ext_resource path="res://UI/PortaltoVilageText.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/DayNightCycle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://object/Tree-1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://object/Tree-2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://object/stub_light.tscn" type="PackedScene" id=9]
+[ext_resource path="res://object/Tree-3.tscn" type="PackedScene" id=10]
+[ext_resource path="res://object/stub.tscn" type="PackedScene" id=11]
+[ext_resource path="res://audio/fukakimori.mp3" type="AudioStream" id=12]
+[ext_resource path="res://object/Grass_3.tscn" type="PackedScene" id=13]
+[ext_resource path="res://object/Grass_1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://object/Grass_2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://object/Rock.tscn" type="PackedScene" id=16]
+[ext_resource path="res://object/WarriorStatue.tscn" type="PackedScene" id=17]
+[ext_resource path="res://object/pilar.tscn" type="PackedScene" id=18]
+[ext_resource path="res://object/FrogStatue.tscn" type="PackedScene" id=19]
+[ext_resource path="res://object/MonkStatue.tscn" type="PackedScene" id=20]
+[ext_resource path="res://object/KnightStatue.tscn" type="PackedScene" id=21]
+[ext_resource path="res://object/Portal_toLevel.tscn" type="PackedScene" id=22]
+[ext_resource path="res://object/PotionShop.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Mobs/ChaChicken.tscn" type="PackedScene" id=24]
+[ext_resource path="res://UI/Dialog_box.tscn" type="PackedScene" id=25]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=26]
+[ext_resource path="res://object/WeaponShop.tscn" type="PackedScene" id=27]
+[ext_resource path="res://object/House_1.tscn" type="PackedScene" id=28]
+[ext_resource path="res://object/House_2.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Mobs/DogCat.tscn" type="PackedScene" id=30]
+[ext_resource path="res://object/Libaray_house.tscn" type="PackedScene" id=31]
+
+[node name="vilage_1" type="Node2D"]
+script = ExtResource( 3 )
+level_name = "사거리 마을"
+
+[node name="Ground" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Ground"]
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
+visible = false
+polygon = PoolVector2Array( -1600, -1600, -1600, 1600, 1600, 1600, 1600, -1600, -1568, -1600, -1728, -1664, 1720, -1696, 1728, 1728, -1728, 1728, -1728, -1664, -1568, -1600 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Ground"]
+visible = false
+polygon = PoolVector2Array( -32, -992, -32, -928, 32, -928, 32, -1232, 16, -1248, -16, -1248, -32, -1232, -32, -1152, -192, -1152, -224, -1120, -232, -1088, -736, -1088, -760, -1136, -752, -1168, -664, -1232, -664, -1360, -696, -1384, -824, -1384, -856, -1440, -1168, -1440, -1176, -1384, -1344, -1376, -1376, -1344, -1392, -1296, -1440, -1280, -1456, -1272, -1448, -1120, -1408, -1104, -1400, -1048, -1384, -1040, -1320, -960, -1152, -960, -1112, -992, -1024, -992, -968, -1024, -952, -1048, -872, -1048, -872, -1016, -776, -1008, -744, -952, -400, -952, -384, -992 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Ground"]
+visible = false
+polygon = PoolVector2Array( 224, -1008, 224, -928, 288, -928, 288, -992, 1600, -992, 1600, -1128, 288, -1128, 288, -1232, 272, -1248, 240, -1248, 224, -1232 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 0 )
+
+[node name="BottomRight" parent="Camera2D/Limits" index="0"]
+position = Vector2( 1600, 1600 )
+
+[node name="TopLeft" parent="Camera2D/Limits" index="1"]
+position = Vector2( -1600, -1600 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
+
+[node name="Trees" type="YSort" parent="YSort"]
+
+[node name="Tree-1" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( -880, 640 )
+
+[node name="Tree-2" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( 1240, 744 )
+
+[node name="Tree-3" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( -448, -16 )
+
+[node name="Tree-4" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( -1424, -480 )
+
+[node name="Tree-5" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( 1088, -624 )
+
+[node name="Tree-6" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( -1160, 944 )
+
+[node name="Tree-16" parent="YSort/Trees" instance=ExtResource( 10 )]
+position = Vector2( 1344, 512 )
+
+[node name="Tree-17" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( 1272, 240 )
+
+[node name="Tree-18" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( 1576, -200 )
+
+[node name="Tree-20" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( 416, -632 )
+
+[node name="Tree-21" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( 696, -1200 )
+
+[node name="Tree-22" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( 1272, -1432 )
+
+[node name="Tree-23" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( -464, -1400 )
+
+[node name="Tree-24" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( -488, -568 )
+
+[node name="Tree-25" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( -432, -832 )
+
+[node name="Tree-26" parent="YSort/Trees" instance=ExtResource( 10 )]
+position = Vector2( 864, -928 )
+
+[node name="Tree-19" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( 824, -720 )
+
+[node name="Tree-7" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( 1024, 960 )
+
+[node name="Tree-8" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( -1112, 344 )
+
+[node name="Tree-9" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( -1496, 744 )
+
+[node name="Tree-10" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( -1152, 1200 )
+
+[node name="Tree-11" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( -992, 1280 )
+
+[node name="Tree-12" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( -1040, 1464 )
+
+[node name="Tree-13" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( -1016, 1592 )
+
+[node name="Tree-14" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( -1576, 1472 )
+
+[node name="Tree-15" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( -1584, 1224 )
+
+[node name="Tree-27" parent="YSort/Trees" instance=ExtResource( 7 )]
+position = Vector2( -1416, -744 )
+
+[node name="Tree-28" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( -1520, -1336 )
+
+[node name="Tree-29" parent="YSort/Trees" instance=ExtResource( 8 )]
+position = Vector2( 872, -1480 )
+
+[node name="Tree-30" parent="YSort/Trees" instance=ExtResource( 10 )]
+position = Vector2( -328, 712 )
+
+[node name="Tree-31" parent="YSort/Trees" instance=ExtResource( 10 )]
+position = Vector2( 880, 792 )
+
+[node name="Stubs" type="YSort" parent="YSort"]
+
+[node name="stub" parent="YSort/Stubs" instance=ExtResource( 11 )]
+position = Vector2( -976, 920 )
+
+[node name="stub_light" parent="YSort/Stubs" instance=ExtResource( 9 )]
+position = Vector2( -816, -8 )
+
+[node name="stub_light2" parent="YSort/Stubs" instance=ExtResource( 9 )]
+position = Vector2( 1488, 1120 )
+
+[node name="Grasses" type="YSort" parent="YSort"]
+
+[node name="Grass_1" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -768, 800 )
+
+[node name="Grass_2" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -824, 392 )
+
+[node name="Grass_3" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -1176, 0 )
+
+[node name="Grass_4" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 208, 608 )
+
+[node name="Grass_5" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 816, 872 )
+
+[node name="Grass_6" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 912, 288 )
+
+[node name="Grass_7" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 536, 96 )
+
+[node name="Grass_8" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -1184, 696 )
+
+[node name="Grass_9" parent="YSort/Grasses" instance=ExtResource( 15 )]
+position = Vector2( -824, 96 )
+
+[node name="Grass_10" parent="YSort/Grasses" instance=ExtResource( 15 )]
+position = Vector2( -112, 720 )
+
+[node name="Grass_11" parent="YSort/Grasses" instance=ExtResource( 13 )]
+position = Vector2( 464, 728 )
+
+[node name="Grass_12" parent="YSort/Grasses" instance=ExtResource( 13 )]
+position = Vector2( 832, 560 )
+
+[node name="Grass_13" parent="YSort/Grasses" instance=ExtResource( 13 )]
+position = Vector2( 672, 760 )
+
+[node name="Grass_14" parent="YSort/Grasses" instance=ExtResource( 13 )]
+position = Vector2( 720, 688 )
+
+[node name="Grass_15" parent="YSort/Grasses" instance=ExtResource( 13 )]
+position = Vector2( 656, 624 )
+
+[node name="Grass_16" parent="YSort/Grasses" instance=ExtResource( 15 )]
+position = Vector2( 688, -864 )
+
+[node name="Grass_17" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 608, -776 )
+
+[node name="Grass_18" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 1536, -904 )
+
+[node name="Grass_19" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 1192, -928 )
+
+[node name="Grass_20" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 344, -1240 )
+
+[node name="Grass_21" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 568, -1440 )
+
+[node name="Grass_22" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 1184, -1376 )
+
+[node name="Grass_23" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -280, -1208 )
+
+[node name="Grass_24" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -592, -1280 )
+
+[node name="Grass_25" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -40, -1472 )
+
+[node name="Grass_26" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -1560, -936 )
+
+[node name="Grass_27" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -912, -1008 )
+
+[node name="Grass_28" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -1248, -1440 )
+
+[node name="Grass_29" parent="YSort/Grasses" instance=ExtResource( 15 )]
+position = Vector2( -1424, 88 )
+
+[node name="Grass_30" parent="YSort/Grasses" instance=ExtResource( 13 )]
+position = Vector2( -1456, -160 )
+
+[node name="Grass_31" parent="YSort/Grasses" instance=ExtResource( 13 )]
+position = Vector2( -1040, 536 )
+
+[node name="Grass_32" parent="YSort/Grasses" instance=ExtResource( 15 )]
+position = Vector2( -1072, 456 )
+
+[node name="Grass_33" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -1440, 1072 )
+
+[node name="Grass_34" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -1520, 984 )
+
+[node name="Grass_35" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( -904, 1392 )
+
+[node name="Grass_36" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 1064, 1456 )
+
+[node name="Grass_37" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 1344, 1256 )
+
+[node name="Grass_38" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 1464, 1464 )
+
+[node name="Grass_39" parent="YSort/Grasses" instance=ExtResource( 14 )]
+position = Vector2( 1528, 1008 )
+
+[node name="Rocks" type="YSort" parent="YSort"]
+
+[node name="Rock" parent="YSort/Rocks" instance=ExtResource( 16 )]
+position = Vector2( -616, 672 )
+
+[node name="Rock2" parent="YSort/Rocks" instance=ExtResource( 16 )]
+position = Vector2( 1528, 336 )
+
+[node name="Rock3" parent="YSort/Rocks" instance=ExtResource( 16 )]
+position = Vector2( 1592, 382 )
+
+[node name="Rock4" parent="YSort/Rocks" instance=ExtResource( 16 )]
+position = Vector2( -136, -848 )
+
+[node name="Rock5" parent="YSort/Rocks" instance=ExtResource( 16 )]
+position = Vector2( -1440, -272 )
+
+[node name="Pilars" type="YSort" parent="YSort"]
+
+[node name="pilar" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( -104, 856 )
+
+[node name="pilar2" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( -768, 1251 )
+
+[node name="pilar21" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( 856, 1280 )
+
+[node name="pilar22" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( 736, 1352 )
+
+[node name="pilar13" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( 592, 1392 )
+
+[node name="pilar14" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( 408, 1424 )
+
+[node name="pilar15" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( 216, 1432 )
+
+[node name="pilar16" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( 832, 1064 )
+
+[node name="pilar17" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( 688, 1005.1 )
+
+[node name="pilar18" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( 512, 984 )
+
+[node name="pilar19" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( 344, 928 )
+
+[node name="pilar20" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( 176, 888 )
+
+[node name="pilar8" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( 32, 1432 )
+
+[node name="pilar9" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( -160, 1432 )
+
+[node name="pilar10" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( -344, 1416 )
+
+[node name="pilar11" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( -512, 1392 )
+
+[node name="pilar12" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( -672, 1352 )
+
+[node name="pilar3" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( -816, 1120 )
+
+[node name="pilar4" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( -704, 1006 )
+
+[node name="pilar5" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( -568, 928 )
+
+[node name="pilar6" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( -432, 856 )
+
+[node name="pilar7" parent="YSort/Pilars" instance=ExtResource( 18 )]
+position = Vector2( -264, 856 )
+
+[node name="Statues" type="YSort" parent="YSort"]
+
+[node name="WarriorStatue" parent="YSort/Statues" instance=ExtResource( 17 )]
+position = Vector2( -104, 936 )
+
+[node name="WarriorStatue2" parent="YSort/Statues" instance=ExtResource( 17 )]
+position = Vector2( 176, 936 )
+scale = Vector2( -1, 1 )
+
+[node name="KnightStatue" parent="YSort/Statues" instance=ExtResource( 21 )]
+position = Vector2( -256, 1240 )
+
+[node name="KnightStatue2" parent="YSort/Statues" instance=ExtResource( 21 )]
+position = Vector2( 312, 1240 )
+scale = Vector2( -1, 1 )
+
+[node name="FrogStatue" parent="YSort/Statues" instance=ExtResource( 19 )]
+position = Vector2( -600, 1134 )
+
+[node name="MonkStatue" parent="YSort/Statues" instance=ExtResource( 20 )]
+position = Vector2( 32, 1272.1 )
+
+[node name="Portals" type="YSort" parent="YSort"]
+
+[node name="Portal_toLevel" parent="YSort/Portals" instance=ExtResource( 22 )]
+position = Vector2( 128, -1472 )
+scale = Vector2( -1, 1 )
+sceneToMove = "res://level/Level_1.tscn"
+
+[node name="Portal_toCave" parent="YSort/Portals" instance=ExtResource( 22 )]
+position = Vector2( -1320, 1552 )
+scale = Vector2( -1, 1 )
+sceneToMove = "res://level/Cave_1.tscn"
+
+[node name="Shops" type="YSort" parent="YSort"]
+
+[node name="PotionShop" parent="YSort/Shops" instance=ExtResource( 23 )]
+position = Vector2( 984, -424 )
+
+[node name="WeaponShop" parent="YSort/Shops" instance=ExtResource( 27 )]
+position = Vector2( 1304, -72 )
+
+[node name="NPCs" type="YSort" parent="YSort"]
+
+[node name="ChaChicken" parent="YSort/NPCs" instance=ExtResource( 24 )]
+position = Vector2( 778, -376 )
+
+[node name="DogCat" parent="YSort/NPCs" instance=ExtResource( 30 )]
+position = Vector2( -640, 520 )
+
+[node name="Houses" type="YSort" parent="YSort"]
+
+[node name="House_1" parent="YSort/Houses" instance=ExtResource( 28 )]
+position = Vector2( 550.465, 254 )
+
+[node name="House_2" parent="YSort/Houses" instance=ExtResource( 29 )]
+position = Vector2( -424, 278 )
+
+[node name="Library_house" parent="YSort/Houses" instance=ExtResource( 31 )]
+position = Vector2( -784, -472 )
+
+[node name="Level_1Pos" type="Position2D" parent="."]
+position = Vector2( 128, -1336 )
+
+[node name="Cave_1Pos" type="Position2D" parent="."]
+position = Vector2( -1312, 1360 )
+
+[node name="Inside_1Pos" type="Position2D" parent="."]
+position = Vector2( 550, 408 )
+
+[node name="Inside_2Pos" type="Position2D" parent="."]
+position = Vector2( -424, 432 )
+
+[node name="LibraryPos" type="Position2D" parent="."]
+position = Vector2( -792, -344 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 26 )]
+margin_left = 0.0
+margin_right = 0.0
+
+[node name="Dialog_box" parent="CanvasLayer/UI" instance=ExtResource( 25 )]
+visible = false
+margin_top = -580.0
+margin_bottom = 5.0
+
+[node name="DayNightCycle" parent="." instance=ExtResource( 6 )]
+
+[node name="Main" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+pitch_scale = 0.9
+autoplay = true
+bus = "Music"
+
+[node name="PortaltoVilageText" parent="." instance=ExtResource( 5 )]
+margin_left = 81.0
+margin_top = -1528.0
+margin_right = 81.0
+margin_bottom = -1528.0
+
+[node name="Label" parent="PortaltoVilageText" index="0"]
+margin_left = -231.0
+margin_top = -32.0
+margin_right = 325.0
+margin_bottom = 0.0
+text = "보라색 포탈은 가장 가까운 지역으로 이동하는 포탈이다."
+
+[editable path="Camera2D"]
+[editable path="DayNightCycle"]
+[editable path="PortaltoVilageText"]

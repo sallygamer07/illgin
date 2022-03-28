@@ -15,6 +15,7 @@
 script = ExtResource( 2 )
 spawn_range_x = [ 0, 100 ]
 spawn_range_y = [ 0, 100 ]
+level_name = "깊은 동굴"
 
 [node name="Bg" type="Sprite" parent="."]
 position = Vector2( -2, 5 )
