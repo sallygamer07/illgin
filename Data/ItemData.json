@@ -18,6 +18,11 @@
     "StackSize": 99,
     "Description": "어디에서나 흔히 볼 수 있는 하얀색 들꽃이다."
   },
+  "화살": {
+    "ItemCategory": "Resource",
+    "StackSize": 99,
+    "Description": "촉이 날카로운 평범한 화살."
+  },
   "개와 고양이의 차이점": {
     "ItemCategory": "Resource",
     "StackSize": 1,
@@ -107,5 +112,14 @@
     "AddMana": 0,
     "StackSize": 99,
     "Description": "맛있게 튀겨진 후라이드 치킨 한 마리. 섭취 시 체력을 10 회복한다."
+  },
+  "고양이 발바닥 부적": {
+    "ItemCategory": "Equip",
+    "AddStatName": "wisdom",
+    "AddStatPoint": 5,
+    "StackSize": 1,
+    "Description": "소지 시 지혜가 5 증가한다."
   }
 }
+
+//Resource, Consumable, Sword, Wand, Bow, Equip
