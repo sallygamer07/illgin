@@ -11,7 +11,7 @@ export(int) var acc = 40
 export(int) var max_speed = 100
 
 onready var anim = $AnimationPlayer
-onready var timer = get_node("ManaUpdate")
+onready var timer = $ManaUpdate
 onready var blink_anim = $BlinkAnimationPlayer
 onready var animated_sprite : AnimatedSprite = get_node("AnimatedSprite")
 onready var weapons : Node2D = get_node("Weapons")
@@ -69,12 +69,17 @@ var is_dashing = false
 var can_dash = true
 var dash_delay = 0.4
 
+var is_sitting = false
+
 var house = null setget set_house
+var sitArea = null setget set_sitArea
+
 
 enum states {
 	IDLE,
 	WALK,
-	HURT
+	HURT,
+	SIT
 }
 
 var state = states.IDLE
@@ -147,6 +152,7 @@ func _ready() -> void:
 		mana = max_mana
 		
 	set_house(null)
+	set_sitArea(null)
 	
 
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
@@ -160,6 +166,9 @@ func _ready() -> void:
 func set_house(new_house):
 	house = new_house
 	
+func set_sitArea(new_sitArea):
+	sitArea = new_sitArea
+	
 func set_speed():
 	speed = max_speed + agility * 4
 	
@@ -168,6 +177,7 @@ func set_max_mana():
 	
 func set_max_health():
 	max_health = default_health + constitution * 4
+	
 
 func load_def():
 	health = data["health"]
@@ -223,36 +233,68 @@ func save_def():
 func _physics_process(_delta):
 	if OS.get_name() == "Windows" or OS.get_name() == "OSX" or OS.get_name() == "HTML5" or OS.get_name() == "X11":
 		player_pc_process(_delta)
-	#print(Global.field_boss_defeat, data["field_boss_defeat"])
 	elif OS.get_name() == "Android" or OS.get_name() == "iOS":
 		player_mobile_process(_delta)
 	
 func player_pc_process(_delta : float):
-	if Global.active == false or Global.active_shop == false:	
-		vel = move_and_slide(vel, dir, false)
-		vel = lerp(vel, Vector2.ZERO, FRICTION)
-		var mouse_dir : Vector2 = (get_global_mouse_position() - global_position).normalized()
-		
-		if mouse_dir.x > 0 and animated_sprite.flip_h:
-			animated_sprite.flip_h = false
-		elif mouse_dir.x < 0 and not animated_sprite.flip_h:
-			animated_sprite.flip_h = true
-		
-		get_input()
-		_state()
-		
-		if dir == Vector2.ZERO:
-			state = states.IDLE
+	#print(SaveFile._player_data["level"], data["level"])
+	if Global.active == false or Global.active_shop == false:
+		if is_sitting == false:
+			vel = move_and_slide(vel, dir, false)
+			for index in get_slide_count():
+				var collision = get_slide_collision(index)
+				var collider = collision.collider
+				var remainder = collision.remainder
+				
+				if collider != null:
+					if collider is WoodenBox:
+						collider.move_and_collide(remainder) # move block by remainder
+
+						
+			vel = lerp(vel, Vector2.ZERO, FRICTION)
 			
-		if current_weapon != null:
-			current_weapon.move(mouse_dir)
-			current_weapon.get_input()
+			get_input()
 			
-		if house != null:
-			$interectE.show()
-		else:
-			$interectE.hide()
+			if dir == Vector2.ZERO:
+				state = states.IDLE
+
+				
+			if house != null:
+				$interectE.show()
+			else:
+				$interectE.hide()
+				
+			if sitArea != null:
+				$interectEtoSit.show()
+			else:
+				$interectEtoSit.hide()
+		
+	_state()
 	
+	var mouse_dir : Vector2 = (get_global_mouse_position() - global_position).normalized()
+	
+	if mouse_dir.x > 0 and animated_sprite.flip_h:
+		animated_sprite.flip_h = false
+	elif mouse_dir.x < 0 and not animated_sprite.flip_h:
+		animated_sprite.flip_h = true	
+		
+	if current_weapon != null:
+		current_weapon.move(mouse_dir)
+		current_weapon.get_input()
+		
+	if Input.is_action_just_pressed("interect") and sitArea != null:
+		var previous_pos : Vector2 = global_position
+		if is_sitting == false:
+			state = states.SIT
+			is_sitting = true
+			global_position = sitArea.sitPos.global_position
+			$interectEtoSit.text = "[E]키를 눌러 일어서기"
+
+		else:
+			state = states.IDLE
+			is_sitting = false
+			global_position = previous_pos
+			$interectEtoSit.text = "[E]키를 눌러 앉기"
 			
 	if data["level"].find("Inside") == -1:
 		$Light2D.enabled = false
@@ -300,9 +342,8 @@ func get_input() -> void:
 	if Input.is_action_just_pressed("interect") and house != null:
 		Global.player_pos = global_position
 		house.enter()
-#	if Input.is_action_just_pressed("ui_home"):
-#		var field_boss_RDG_instance = field_boss_RDG.instance()
-#		get_tree().get_root().add_child(field_boss_RDG_instance)
+
+
 func dash():
 	speed = speed + 300
 	animated_sprite.material.set_shader_param("active", true)
@@ -370,6 +411,8 @@ func move() -> void:
 	vel += dir * acc
 	vel = vel.clamped(speed)
 	state = states.WALK
+
+	
 	if $FootStepTimer.time_left <= 0:
 		$AudioStreamPlayer.pitch_scale = rand_range(0.8, 1.2)
 		$AudioStreamPlayer.play()
@@ -378,8 +421,12 @@ func move() -> void:
 func _state() -> void:
 	if state == states.IDLE:
 		anim.play("Idle")
+
 	if state == states.WALK:
 		anim.play("Walk")
+		
+	if state == states.SIT:
+		anim.play("sit")
 
 func _on_dialog_started():
 	pass
@@ -523,37 +570,50 @@ func _on_GhostTimer_timeout():
 
 func player_mobile_process(_delta : float):
 	if Global.active == false or Global.active_shop == false:
-		move()
-		vel = move_and_slide(vel, dir, false)
-		vel = lerp(vel, Vector2.ZERO, FRICTION)
-		animated_sprite.flip_h = dir.x < 0
+		if is_sitting == false:
+			move()
+			vel = move_and_slide(vel, dir, false)
 			
-		if current_weapon != null:
-			current_weapon.move(dir)
-			current_weapon.get_input()
+			for index in get_slide_count():
+				var collision = get_slide_collision(index)
+				var collider = collision.collider
+				var remainder = collision.remainder
+				
+				if collider != null:
+					if collider is WoodenBox:
+						collider.move_and_collide(remainder) # move block by remainder
 			
+			vel = lerp(vel, Vector2.ZERO, FRICTION)
+			animated_sprite.flip_h = dir.x < 0
+				
+			if current_weapon != null:
+				current_weapon.move(dir)
+				current_weapon.get_input()
+				
+				
+			if house != null:
+				$interectE.show()
+			else:
+				$interectE.hide()
+				
+			#sit null show hide
+		
 		_state()
-			
-		if house != null:
-			$interectE.show()
+				
+		if data["level"].find("Inside") == -1:
+			$Light2D.enabled = false
 		else:
-			$interectE.hide()
-	
-			
-	if data["level"].find("Inside") == -1:
-		$Light2D.enabled = false
-	else:
-		$Light2D.enabled = true
+			$Light2D.enabled = true
 
-			
-	if player_dead == false:
-		if timer_reset == false:
-			timer_reset = true
-			timer.set_wait_time(mana_update)
-			timer.start()
-			
-	if health <= 0:
-		dead_shader()
+				
+		if player_dead == false:
+			if timer_reset == false:
+				timer_reset = true
+				timer.set_wait_time(mana_update)
+				timer.start()
+				
+		if health <= 0:
+			dead_shader()
 	
 	
 func _on_MobileControls_use_move_vector(move_vector):
@@ -571,3 +631,5 @@ func on_transitioned():
 	Global.player = null
 	queue_free()
 	SceneChanger.goto_scene("res://level/GameOver.tscn", get_parent().get_parent())
+
+

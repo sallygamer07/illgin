@@ -109,19 +109,6 @@ func _process(_delta):
 	
 	if Input.is_action_pressed("attack"):
 		Attack()
-		
-	if Global.player != null:
-		
-		if Global.player.mana < 1 and Global.magic == "Fire":
-			mana_empty = true
-		if Global.player.mana < 2 and Global.magic == "Heal":
-			mana_empty = true
-		if Global.player.mana < 5 and Global.magic == "Metaeo":
-			mana_empty = true
-		if Global.player.mana < 4 and Global.magic == "Light_Metaeo":
-			mana_empty = true
-		if Global.player.mana < 7 and Global.magic == "Aura":
-			mana_empty = true
 
 func Attack():
 	if Global.player_weapon == "Magic":
@@ -137,9 +124,8 @@ func Fire():
 		var mouse_pos : Vector2 = get_global_mouse_position()
 		deg_for_fire = mouse_pos.angle_to_point(global_position)
 		look_at(mouse_pos)
-		
 
-		if Global.player.mana > 1 and skill_1A == true:
+		if Global.player.mana >= 1 and skill_1A == true:
 			if attack_timer.time_left <= 0.0:
 				set_damage_wand(fire_ap)
 				mana_empty = false
@@ -154,7 +140,7 @@ func Fire():
 			
 func Heal():
 	if Global.magic == "Heal":
-		if Global.player.mana > 2 and skill_1B == true:
+		if Global.player.mana >= 2 and skill_1B == true:
 			if attack_timer.time_left <= 0.0:
 				mana_empty = false
 				var heal_instance = heal.instance()
@@ -180,7 +166,7 @@ func Metaeo():
 		look_at(mouse_pos)
 		
 
-		if Global.player.mana > 5 and skill_2A == true:
+		if Global.player.mana >= 5 and skill_2A == true:
 			if attack_timer.time_left <= 0.0:
 				set_damage_wand(metaeo_ap)
 				mana_empty = false
@@ -202,7 +188,7 @@ func Light_Metaeo():
 		look_at(mouse_pos)
 		
 
-		if Global.player.mana > 4 and skill_2B == true:
+		if Global.player.mana >= 4 and skill_2B == true:
 			if attack_timer.time_left <= 0.0:
 				set_damage_wand(light_metaeo_ap)
 				mana_empty = false
@@ -227,7 +213,7 @@ func Light_Metaeo():
 
 func Aura():
 	if Global.magic == "Aura":
-		if Global.player.mana > 7 and skill_2C == true:
+		if Global.player.mana >= 7 and skill_2C == true:
 			if attack_timer.time_left <= 0.0:
 				mana_empty = false
 				var aura_instance = aura.instance()

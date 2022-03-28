@@ -28,7 +28,6 @@ func get_item(item_name : String):
 
 func add_item(item_name : String, item_quantity : int):
 	if inventory.size() < NUM_INVENTORY_SLOTS:
-		print(inventory.size())
 		emit_signal("get_item_label", item_name)
 		for item in inventory:
 			if typeof(inventory[item][0]) == TYPE_STRING:
@@ -88,24 +87,22 @@ func add_item_quantity(slot : SlotClass, quantity_to_add : int, is_hotbar : bool
 	else:
 		inventory[slot.slot_index][1] += quantity_to_add
 	
-func remove_item_quest(type : String, amount : int, is_hotbar : bool = false):
-	if is_hotbar == true:
-		for item in hotbar:
-			if hotbar[item][0] == type and hotbar[item][1] >= amount:
-				hotbar[item][1] -= amount
-				if hotbar[item][1] == 0:
-					hotbar.erase(type)
-				update_slot_visual(item, hotbar[item][0], hotbar[item][1], true)
-				return true
-				
-	if is_hotbar == false:
-		for item in inventory:
-			if inventory[item][0] == type and inventory[item][1] >= amount:
-				inventory[item][1] -= amount
-				if inventory[item][1] == 0:
-					inventory.erase(type)
-				update_slot_visual(item, inventory[item][0], inventory[item][1])
-				return true
+func remove_item_quest(type : String, amount : int):
+	for item in hotbar:
+		if hotbar[item][0] == type and hotbar[item][1] >= amount:
+			hotbar[item][1] -= amount
+			if hotbar[item][1] == 0:
+				hotbar.erase(type)
+			update_slot_visual(item, hotbar[item][0], hotbar[item][1], true)
+			return true
+			
+	for item in inventory:
+		if inventory[item][0] == type and inventory[item][1] >= amount:
+			inventory[item][1] -= amount
+			if inventory[item][1] == 0:
+				inventory.erase(type)
+			update_slot_visual(item, inventory[item][0], inventory[item][1])
+			return true
 
 func active_item_scroll_up():
 	active_item_slot = (active_item_slot + 1) % NUM_HOTBAR_SLOTS

@@ -80,6 +80,9 @@ func use_item(using_item, slot, is_hotbar : bool = false):
 						
 				elif item_name == "후라이드 치킨":
 					use_item_add_health(item_name, slot)
+				
+				elif item_name == "고양이 발바닥 부적":
+					use_item_add_stat(item_name, slot)
 					
 			else:
 				PlayerInventory.remove_item(slot)
@@ -88,13 +91,16 @@ func use_item(using_item, slot, is_hotbar : bool = false):
 		if is_hotbar == true:
 			if PlayerInventory.hotbar[slot.slot_index][1] >= 1:
 				if item_name == "하급 회복 포션":
-					use_item_add_health(item_name, slot)
+					use_item_add_health(item_name, slot, is_hotbar)
 					
 				elif item_name == "하급 마나 포션":
-					use_item_add_mana(item_name, slot)
+					use_item_add_mana(item_name, slot, is_hotbar)
 					
 				elif item_name == "후라이드 치킨":
-					use_item_add_health(item_name, slot)
+					use_item_add_health(item_name, slot, is_hotbar)
+				
+				elif item_name == "고양이 발바닥 부적":
+					use_item_add_stat(item_name, slot, is_hotbar)
 					
 			else:
 				PlayerInventory.remove_item(slot)
@@ -114,28 +120,76 @@ func initialize_item(item_name, item_quantity):
 		item.set_item(item_name, item_quantity)
 	refresh_style()
 
-func use_item_add_health(item_name, slot):
-	var add_health = int(JsonData.item_data[item_name]["AddHealth"])
-	if Global.player.health < Global.player.max_health:
-		Global.player._health_potion(add_health)
-	PlayerInventory.inventory[slot.slot_index][1] -= 1
-	slot.item.decrease_item_quantity(1)
-	PlayerInventory.update_slot_visual(slot.slot_index, PlayerInventory.inventory[slot.slot_index][0], PlayerInventory.inventory[slot.slot_index][1])
-	refresh_style()
-	if PlayerInventory.inventory[slot.slot_index][1] == 0:
-		PlayerInventory.remove_item(slot)
-		erase_used_item(item)
+func use_item_add_health(item_name, slot, is_hotbar : bool = false):
+	if is_hotbar == false:
+		var add_health = int(JsonData.item_data[item_name]["AddHealth"])
+		if Global.player.health < Global.player.max_health:
+			Global.player._health_potion(add_health)
+		PlayerInventory.inventory[slot.slot_index][1] -= 1
+		slot.item.decrease_item_quantity(1)
+		PlayerInventory.update_slot_visual(slot.slot_index, PlayerInventory.inventory[slot.slot_index][0], PlayerInventory.inventory[slot.slot_index][1])
+		refresh_style()
+		if PlayerInventory.inventory[slot.slot_index][1] == 0:
+			PlayerInventory.remove_item(slot)
+			erase_used_item(item)
+	else:
+		var add_health = int(JsonData.item_data[item_name]["AddHealth"])
+		if Global.player.health < Global.player.max_health:
+			Global.player._health_potion(add_health)
+		PlayerInventory.hotbar[slot.slot_index][1] -= 1
+		slot.item.decrease_item_quantity(1)
+		PlayerInventory.update_slot_visual(slot.slot_index, PlayerInventory.hotbar[slot.slot_index][0], PlayerInventory.hotbar[slot.slot_index][1])
+		refresh_style()
+		if PlayerInventory.hotbar[slot.slot_index][1] == 0:
+			PlayerInventory.remove_item(slot)
+			erase_used_item(item)
 		
-func use_item_add_mana(item_name, slot):
-	var add_mana = int(JsonData.item_data[item_name]["AddMana"])
-	if Global.player.mana < Global.player.max_mana:
-		Global.player.mana += add_mana
-	PlayerInventory.inventory[slot.slot_index][1] -= 1
-	slot.item.decrease_item_quantity(1)
-	PlayerInventory.update_slot_visual(slot.slot_index, PlayerInventory.inventory[slot.slot_index][0], PlayerInventory.inventory[slot.slot_index][1])
-	refresh_style()
-	if PlayerInventory.inventory[slot.slot_index][1] == 0:
-		PlayerInventory.remove_item(slot)
-		erase_used_item(item)
+func use_item_add_mana(item_name, slot, is_hotbar : bool = false):
+	if is_hotbar == false:
+		var add_mana = int(JsonData.item_data[item_name]["AddMana"])
+		if Global.player.mana < Global.player.max_mana:
+			Global.player.mana += add_mana
+		PlayerInventory.inventory[slot.slot_index][1] -= 1
+		slot.item.decrease_item_quantity(1)
+		PlayerInventory.update_slot_visual(slot.slot_index, PlayerInventory.inventory[slot.slot_index][0], PlayerInventory.inventory[slot.slot_index][1])
+		refresh_style()
+		if PlayerInventory.inventory[slot.slot_index][1] == 0:
+			PlayerInventory.remove_item(slot)
+			erase_used_item(item)	
+	else:
+		var add_mana = int(JsonData.item_data[item_name]["AddMana"])
+		if Global.player.mana < Global.player.max_mana:
+			Global.player.mana += add_mana
+		PlayerInventory.hotbar[slot.slot_index][1] -= 1
+		slot.item.decrease_item_quantity(1)
+		PlayerInventory.update_slot_visual(slot.slot_index, PlayerInventory.hotbar[slot.slot_index][0], PlayerInventory.hotbar[slot.slot_index][1])
+		refresh_style()
+		if PlayerInventory.hotbar[slot.slot_index][1] == 0:
+			PlayerInventory.remove_item(slot)
+			erase_used_item(item)
+		
+func use_item_add_stat(item_name, slot, is_hotbar : bool = false):
+	if is_hotbar == false:
+		var add_stat = int(JsonData.item_data[item_name].AddStatPoint)
+		if JsonData.item_data[item_name].AddStatName == "wisdom":
+			Global.player.wisdom += add_stat
+		PlayerInventory.inventory[slot.slot_index][1] -= 1
+		slot.item.decrease_item_quantity(1)
+		PlayerInventory.update_slot_visual(slot.slot_index, PlayerInventory.inventory[slot.slot_index][0], PlayerInventory.inventory[slot.slot_index][1])
+		refresh_style()
+		if PlayerInventory.inventory[slot.slot_index][1] == 0:
+			PlayerInventory.remove_item(slot)
+			erase_used_item(item)
+	else:
+		var add_stat = int(JsonData.item_data[item_name].AddStatPoint)
+		if JsonData.item_data[item_name].AddStatName == "wisdom":
+			Global.player.wisdom += add_stat
+		PlayerInventory.hotbar[slot.slot_index][1] -= 1
+		slot.item.decrease_item_quantity(1)
+		PlayerInventory.update_slot_visual(slot.slot_index, PlayerInventory.hotbar[slot.slot_index][0], PlayerInventory.hotbar[slot.slot_index][1])
+		refresh_style()
+		if PlayerInventory.hotbar[slot.slot_index][1] == 0:
+			PlayerInventory.remove_item(slot)
+			erase_used_item(item)
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Weapons/평범한 검.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/Wand.tscn" type="PackedScene" id=2]
@@ -68,7 +68,11 @@ region = Rect2( 64, 0, 16, 16 )
 atlas = ExtResource( 6 )
 region = Rect2( 80, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
@@ -79,13 +83,18 @@ animations = [ {
 "loop": true,
 "name": "Idle",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 13 ) ],
+"loop": true,
+"name": "Sit",
+"speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=14]
+[sub_resource type="CapsuleShape2D" id=15]
 radius = 13.4246
-height = 10.284
+height = 5.1508
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -113,7 +122,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -141,7 +150,36 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
+resource_name = "sit"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Sit" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=19]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -171,7 +209,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=20]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:material:shader_param/active")
@@ -186,8 +224,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=19]
-resource_name = "dead"
+[sub_resource type="Animation" id=21]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:material:shader_param/Fade")
@@ -216,7 +253,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="CapsuleShape2D" id=20]
+[sub_resource type="CapsuleShape2D" id=22]
 radius = 24.0
 height = 16.965
 
@@ -235,27 +272,27 @@ texture = ExtResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -16 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 13 )
-animation = "Walk"
-frame = 5
+frames = SubResource( 14 )
+animation = "Sit"
 
 [node name="collision" type="CollisionShape2D" parent="." groups=[
 "player",
 ]]
 visible = false
 rotation = 1.5708
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 15 )
-anims/Walk = SubResource( 16 )
+anims/Idle = SubResource( 16 )
+anims/Walk = SubResource( 17 )
+anims/sit = SubResource( 18 )
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Start = SubResource( 17 )
-anims/Stop = SubResource( 18 )
+anims/Start = SubResource( 19 )
+anims/Stop = SubResource( 20 )
 
 [node name="DissolveAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/dead = SubResource( 19 )
+anims/dead = SubResource( 21 )
 
 [node name="Wand" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 20 )
@@ -298,7 +335,7 @@ position = Vector2( 0, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2( 0, -15.5175 )
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -331,6 +368,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="interectEtoSit" type="Label" parent="."]
+visible = false
+margin_left = -74.0
+margin_top = -77.0
+margin_right = 117.0
+margin_bottom = -45.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = ExtResource( 18 )
+text = "[E] 키를 눌러 앉기"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 19 )
 energy = 0.8
@@ -354,3 +404,4 @@ shadow_filter_smooth = 50.0
 [connection signal="timeout" from="GhostTimer" to="." method="_on_GhostTimer_timeout"]
 
 [editable path="Wand"]
+[editable path="Bow"]
