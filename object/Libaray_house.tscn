@@ -28,4 +28,4 @@ shape = SubResource( 2 )
 
 [node name="house" type="Node" parent="."]
 script = ExtResource( 3 )
-inside_path = "res://level/library.tscn"
+inside_path = "res://level/Library.tscn"
