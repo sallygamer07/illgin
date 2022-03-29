@@ -19,7 +19,7 @@ func _ready():
 	player = Global.player
 
 func _physics_process(_delta):
-	if player != null:
+	if is_instance_valid(player):
 		var to_player = player.global_position - pet.global_position
 		var distance = to_player.length()
 		var direction = Vector2.ZERO
