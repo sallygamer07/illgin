@@ -3,7 +3,11 @@ class_name vilage
 
 export(String) var level_name = ""
 
-var player
+onready var ysort = get_node("YSort")
+onready var player = get_node("YSort/Player")
+
+var dog = preload("res://Mobs/Dog.tscn")
+
 #onready var mobs = $YSort/Mobs
 
 #var enemy_1 = preload("res://Mobs/LPS.tscn")
@@ -20,6 +24,10 @@ func _ready():
 	
 	if Global.from_level != null:
 		Global.player.set_position(get_node(Global.from_level + "Pos").global_position)
+	
+	var dog_instance = dog.instance()
+	ysort.add_child(dog_instance)
+	dog_instance.global_position = player.global_position
 	
 func _exit_tree():
 	Global.node_creation_parent = null

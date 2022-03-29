@@ -6,8 +6,11 @@ export(String) var level_name = ""
 
 onready var area : Area2D = get_node("../Area2D")
 onready var player : KinematicBody2D = get_node("../YSort/Player")
+onready var ysort : YSort = get_node("../YSort")
 onready var FadeScene : CanvasLayer = get_node("../FadeScene")
 onready var main : AudioStreamPlayer = get_node("../Main")
+
+var dog = preload("res://Mobs/Dog.tscn")
 
 var entered = false
 
@@ -22,6 +25,11 @@ func _ready():
 	
 	var _inside_area = area.connect("body_entered", self, "on_Area2D_body_entered")
 	var _inside_area_ = area.connect("body_exited", self, "on_Area2D_body_exited")
+
+	var dog_instance = dog.instance()
+	ysort.add_child(dog_instance)
+	dog_instance.global_position = player.global_position
+	dog_instance.scale = Vector2(0.6, 0.6)
 	
 func _exit_tree():
 	Global.node_creation_parent = null

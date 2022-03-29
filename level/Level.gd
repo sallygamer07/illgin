@@ -7,12 +7,13 @@ export(Array) var spawn_range_y = [-384, 960]
 export(String) var level_name = ""
 
 onready var navigation = get_node("Navigation2D")
+onready var mobs = get_node("YSort/Mobs")
+onready var player = get_node("YSort/Player")
 
-var player
-var mobs
 
 var enemy_1 = preload("res://Mobs/LPS.tscn")
 var enemy_2 = preload("res://Mobs/Duggie.tscn")
+var dog = preload("res://Mobs/Dog.tscn")
 
 
 var num
@@ -26,6 +27,10 @@ func _ready():
 	
 	if Global.from_level != null:
 		Global.player.set_position(get_node(Global.from_level + "Pos").global_position)
+	
+	var dog_instance = dog.instance()
+	mobs.add_child(dog_instance)
+	dog_instance.global_position = player.global_position
 	
 func _exit_tree():
 	Global.node_creation_parent = null

@@ -8,8 +8,6 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	Global.node_creation_parent = self
-	player = $YSort/Player
-	mobs = $YSort/Mobs
 	
 	#place_patch(Vector2(100, 100), Vector2(2000, 2000))
 	
