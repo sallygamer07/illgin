@@ -5,8 +5,6 @@ onready var tileMap = get_node("Navigation2D/Floor")
 
 
 func _ready():
-	player = $YSort/Player
-	mobs = $YSort/Mobs
 	navigation = get_node("Navigation2D")
 	
 	player.switch_weapon()
