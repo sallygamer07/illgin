@@ -52,6 +52,10 @@ func _process(_delta):
 		set_skill_lock()
 		show_skillbar()
 		
+		if Global.player != null:
+			if Global.player.health <= 0:
+				self.hide()
+		
 		
 		
 	
@@ -126,8 +130,8 @@ func _input(event):
 	if event.is_action_pressed("skill"):
 		$SkillTree.visible = !$SkillTree.visible
 		
-	if event.is_action_pressed("map"):
-		$Map.visible = !$Map.visible
+#	if event.is_action_pressed("map"):
+#		$Map.visible = !$Map.visible
 		
 	if event.is_action_pressed("CharacterSheet"):
 		character_sheet_visible = !character_sheet_visible
