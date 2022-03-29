@@ -1,5 +1,7 @@
 # READ ME
 
+(graghics 파일 업로드하기)
+
 It is an Action RPG.
 
 This game is based on the red hood fairy tale.
