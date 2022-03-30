@@ -1,35 +1,33 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://graphics/mapIcon/level_1_map.png" type="Texture" id=1]
 [ext_resource path="res://graphics/shadows/LargeShadow.png" type="Texture" id=2]
 [ext_resource path="res://graphics/mapIcon/level_2_map.png" type="Texture" id=3]
 [ext_resource path="res://graphics/mapIcon/level_3_map.png" type="Texture" id=4]
 [ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=5]
+[ext_resource path="res://graphics/test/player.png" type="Texture" id=6]
+[ext_resource path="res://UI/Map.gd" type="Script" id=7]
 
 [node name="Map" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 7 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Bg" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.8, 0.768627, 0.717647, 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true
 }
 
-[node name="Level_1" type="TextureButton" parent="."]
+[node name="Level_1" type="TextureButton" parent="." groups=["LevelBtn"]]
 margin_left = 128.0
 margin_top = 64.0
 margin_right = 192.0
 margin_bottom = 128.0
+rect_pivot_offset = Vector2( 32, 32 )
 texture_normal = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sprite" type="Sprite" parent="Level_1"]
 show_behind_parent = true
@@ -47,11 +45,12 @@ text = "녹빛 평원"
 align = 1
 valign = 1
 
-[node name="Level_2" type="TextureButton" parent="."]
+[node name="Level_2" type="TextureButton" parent="." groups=["LevelBtn"]]
 margin_left = 256.0
 margin_top = 64.0
 margin_right = 320.0
 margin_bottom = 128.0
+rect_pivot_offset = Vector2( 32, 32 )
 texture_normal = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -76,15 +75,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level_3" type="TextureButton" parent="."]
+[node name="Level_3" type="TextureButton" parent="." groups=["LevelBtn"]]
 margin_left = 128.0
 margin_top = 160.0
 margin_right = 192.0
 margin_bottom = 224.0
+rect_pivot_offset = Vector2( 32, 32 )
 texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sprite" type="Sprite" parent="Level_3"]
 show_behind_parent = true
@@ -104,3 +101,7 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PlayerSprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )

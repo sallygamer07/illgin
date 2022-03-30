@@ -2,6 +2,7 @@ extends Control
 
 
 onready var charcter_sheet = preload("res://UI/CharacterSheet.tscn")
+onready var map = preload("res://UI/Map.tscn")
 
 onready var HPbar = $HealthBar
 onready var HPLabel = $HealthBar/Label
@@ -17,6 +18,7 @@ var holding_item = null
 var selecting_item = null
 
 var character_sheet_visible = false
+var map_visible = false
 
 
 func _ready():
@@ -131,7 +133,15 @@ func _input(event):
 		$SkillTree.visible = !$SkillTree.visible
 		
 	if event.is_action_pressed("map"):
-		$Map.visible = !$Map.visible
+		map_visible = !map_visible
+		if map_visible == true:
+			var map_instance = map.instance()
+			add_child(map_instance)
+			move_child(map_instance, 20)
+		if map_visible == false:
+			if get_node_or_null("Map"):
+				var m = get_node("Map")
+				m.queue_free()
 		
 	if event.is_action_pressed("CharacterSheet"):
 		character_sheet_visible = !character_sheet_visible
@@ -151,9 +161,9 @@ func _input(event):
 		PlayerInventory.active_item_scroll_up()
 
 func set_skill_lock():
-	if $Inventory.visible == false or $SkillTree.visible == false or $QuestTree.visible == false or character_sheet_visible == false or $Shops.visible == false:
+	if $Inventory.visible == false or $SkillTree.visible == false or $QuestTree.visible == false or character_sheet_visible == false or $Shops.visible == false or map_visible == false:
 		player_unlock()
-	if $Inventory.visible == true or $SkillTree.visible == true or $QuestTree.visible == true or character_sheet_visible == true or $Shops.visible == true:
+	if $Inventory.visible == true or $SkillTree.visible == true or $QuestTree.visible == true or character_sheet_visible == true or $Shops.visible == true or map_visible == true:
 		player_lock()
 
 
