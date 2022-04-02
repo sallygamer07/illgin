@@ -18,6 +18,11 @@
     "StackSize": 99,
     "Description": "어디에서나 흔히 볼 수 있는 하얀색 들꽃이다."
   },
+  "나무 궤짝": {
+    "ItemCategory": "Resource",
+    "StackSize": 1,
+    "Description": "겉은 허름하지만 안에는 뭐가 들어있을지 아무도 모른다."
+  },
   "화살": {
     "ItemCategory": "Resource",
     "StackSize": 99,
@@ -121,3 +126,5 @@
     "Description": "소지 시 지혜가 5 증가한다."
   }
 }
+
+//Resource, Consumable, Sword, Wand, Bow, Equip
