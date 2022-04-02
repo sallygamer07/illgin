@@ -45,4 +45,3 @@ func place_grass(x: int, y: int) -> void:
 #			if y % 10 != 0:
 #				continue
 #			place_grass(x, y)
-

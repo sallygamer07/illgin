@@ -18,6 +18,7 @@ func _ready():
 	Global.node_creation_parent = self
 	Global.player.data["level"] = name
 	Global.mainMenu = false
+	Global.object_YSort = $YSort/Objects
 	
 #	if player != null:
 #		player.global_position = Global.player_pos

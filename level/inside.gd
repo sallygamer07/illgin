@@ -19,6 +19,7 @@ func _ready():
 	Global.player.data["level"] = get_parent().name
 	Global.node_creation_parent = self
 	Global.mainMenu = false
+	Global.object_YSort = get_node("../YSort/Objects")
 	
 	if Global.from_level != null:
 		Global.player.set_position(get_node("../" + Global.from_level + "Pos").global_position)

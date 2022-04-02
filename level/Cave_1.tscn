@@ -68,6 +68,8 @@ remote_path = NodePath("../../../Camera2D")
 position = Vector2( -336, 696 )
 sceneToMove = "res://level/vilage_1.tscn"
 
+[node name="Objects" type="YSort" parent="YSort"]
+
 [node name="vilage_1Pos" type="Position2D" parent="."]
 position = Vector2( -256, 698.357 )
 

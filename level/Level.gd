@@ -23,6 +23,7 @@ func _ready():
 	Global.node_creation_parent = self
 	Global.player.data["level"] = name
 	Global.mainMenu = false
+	Global.object_YSort = $YSort/Objects
 
 	
 	if Global.from_level != null:

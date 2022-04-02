@@ -455,6 +455,8 @@ position = Vector2( -424, 278 )
 [node name="Library_house" parent="YSort/Houses" instance=ExtResource( 31 )]
 position = Vector2( -784, -472 )
 
+[node name="Objects" type="YSort" parent="YSort"]
+
 [node name="Level_1Pos" type="Position2D" parent="."]
 position = Vector2( 128, -1336 )
 

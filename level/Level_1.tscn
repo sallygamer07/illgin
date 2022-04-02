@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://object/stub.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Details.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://object/Tree-3.tscn" type="PackedScene" id=4]
 [ext_resource path="res://level/BossArea.gd" type="Script" id=5]
 [ext_resource path="res://object/Arrow_item.tscn" type="PackedScene" id=6]
+[ext_resource path="res://object/Chest_item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://object/Tree-2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://object/Rock.tscn" type="PackedScene" id=9]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=10]
@@ -21,8 +22,6 @@
 [ext_resource path="res://UI/PortaltoVilageText.tscn" type="PackedScene" id=20]
 [ext_resource path="res://object/DryStick.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Mobs/Duggie.tscn" type="PackedScene" id=22]
-[ext_resource path="res://object/NormalSword.tscn" type="PackedScene" id=23]
-[ext_resource path="res://object/Chest.tscn" type="PackedScene" id=24]
 [ext_resource path="res://object/EasyBow.tscn" type="PackedScene" id=25]
 [ext_resource path="res://object/Portal_toLevel.tscn" type="PackedScene" id=26]
 [ext_resource path="res://OutSideTileSet.tres" type="TileSet" id=27]
@@ -167,16 +166,10 @@ sceneToMove = "res://level/Level_2.tscn"
 position = Vector2( -752, 1344 )
 sceneToMove = "res://level/Level_3.tscn"
 
-[node name="Chests" type="YSort" parent="YSort"]
-
-[node name="Chest" parent="YSort/Chests" instance=ExtResource( 24 )]
-position = Vector2( 845.765, 1512 )
+[node name="Objects" type="YSort" parent="YSort"]
 
 [node name="DryStick" parent="YSort" instance=ExtResource( 21 )]
 position = Vector2( 1744, 1304 )
-
-[node name="NormalSword" parent="YSort" instance=ExtResource( 23 )]
-position = Vector2( 830.834, 1664 )
 
 [node name="EasyBow" parent="YSort" instance=ExtResource( 25 )]
 position = Vector2( 1038.83, 1368 )
@@ -189,6 +182,9 @@ position = Vector2( 462.834, 1512 )
 
 [node name="Arrow_item3" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 522, 1632 )
+
+[node name="Chest_item" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1038.83, 1768 )
 
 [node name="vilage_1Pos" type="Position2D" parent="."]
 position = Vector2( 1592, 300.935 )

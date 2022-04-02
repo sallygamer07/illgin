@@ -51,6 +51,8 @@ sceneToMove = "res://level/Level_1.tscn"
 
 [node name="Mobs" type="YSort" parent="YSort"]
 
+[node name="Objects" type="YSort" parent="YSort"]
+
 [node name="Level_1Pos" type="Position2D" parent="."]
 position = Vector2( 1626.73, 1011.19 )
 

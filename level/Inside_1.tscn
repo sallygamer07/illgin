@@ -137,6 +137,8 @@ position = Vector2( 208, 248 )
 [node name="WoodenBox23" parent="YSort/Boxes" instance=ExtResource( 5 )]
 position = Vector2( 112, 168 )
 
+[node name="Objects" type="YSort" parent="YSort"]
+
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="SitArea" parent="Areas" instance=ExtResource( 8 )]

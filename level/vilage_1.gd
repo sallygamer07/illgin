@@ -1,6 +1,6 @@
 extends vilage
 
-func _ready():
+func _ready():	
 	player.switch_weapon()
 	
 	$Main.play()
