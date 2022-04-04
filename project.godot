@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://object/Object.gd"
 }, {
+"base": "Node",
+"class": "Pet",
+"language": "GDScript",
+"path": "res://Mobs/Pet.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -48,6 +53,11 @@ _global_script_classes=[ {
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://Weapons/Weapon.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "WoodenBox",
+"language": "GDScript",
+"path": "res://object/WoodenBox.gd"
 }, {
 "base": "Node2D",
 "class": "bossArea",
@@ -69,6 +79,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://level/inside.gd"
 }, {
+"base": "Area2D",
+"class": "sitArea",
+"language": "GDScript",
+"path": "res://player/SitArea.gd"
+}, {
+"base": "StaticBody2D",
+"class": "tree",
+"language": "GDScript",
+"path": "res://object/Tree.gd"
+}, {
 "base": "Node2D",
 "class": "vilage",
 "language": "GDScript",
@@ -80,13 +100,17 @@ _global_script_class_icons={
 "Hitbox": "",
 "Level": "",
 "Objection": "",
+"Pet": "",
 "Player": "",
 "Player_Effect": "",
 "Weapon": "res://graphics/objects/평범한 검.png",
+"WoodenBox": "",
 "bossArea": "",
 "drop_item": "",
 "house": "res://graphics/objects/houses/house_2.png",
 "inside": "",
+"sitArea": "",
+"tree": "",
 "vilage": ""
 }
 
@@ -247,6 +271,11 @@ minus={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":45,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777347,"unicode":0,"echo":false,"script":null)
+ ]
+}
+map={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":77,"unicode":0,"echo":false,"script":null)
  ]
 }
 

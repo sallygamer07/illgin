@@ -27,6 +27,10 @@ var player_weapon
 
 var DayNightCycle
 
+var object_YSort
+
+var crafting_table = false
+
 func instance_node(node, location, parent):
 	var node_instance = node.instance()
 	parent.add_child(node_instance)
