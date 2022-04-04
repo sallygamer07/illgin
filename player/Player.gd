@@ -4,6 +4,9 @@ class_name Player
 signal player_damaged
 signal player_level_up
 signal player_die
+signal invincible_started
+signal invincible_ended
+
 
 const FRICTION : float = 0.15
 
@@ -13,6 +16,7 @@ export(int) var max_speed = 100
 onready var anim = $AnimationPlayer
 onready var timer = $ManaUpdate
 onready var blink_anim = $BlinkAnimationPlayer
+onready var invinTimer = $InvincibleTimer
 onready var animated_sprite : AnimatedSprite = get_node("AnimatedSprite")
 onready var weapons : Node2D = get_node("Weapons")
 onready var floating_text = preload("res://UI/FloatingText.tscn")
@@ -73,6 +77,7 @@ var is_sitting = false
 
 var house = null setget set_house
 var sitArea = null setget set_sitArea
+var invincible = false setget set_invincible
 
 
 enum states {
@@ -477,6 +482,19 @@ func on_LevelUP_timeout():
 	$LevelUP.hide()
 	
 	
+func set_invincible(value):
+	invincible = value
+	if invincible == true:
+		emit_signal("invincible_started")
+	else:
+		emit_signal("invincible_ended")
+		
+		
+func start_invincible(duration):
+	self.invincible = true
+	invinTimer.start(duration)
+	
+	
 func _on_ManaUpdate_timeout():
 	if mana < max_mana:
 		mana += 0.2
@@ -492,6 +510,7 @@ func exited_can_hurt():
 	can_hurt = true
 	
 func on_hurt(damage):
+	blink_anim.play("Start")
 	var text = floating_text.instance()
 	text.amount = damage
 	text.type = "Damage"
@@ -502,29 +521,26 @@ func _on_HurtBox_area_entered(area):
 		if can_hurt == true:
 			if area.is_in_group("Swing"):
 				health -= int(Global.boss.swing_ap)
-				blink_anim.play("Start")
 				on_hurt(Global.boss.swing_ap)
 				
 			if area.is_in_group("Thunder"):
 				health -= int(Global.boss.thunder_ap)
-				blink_anim.play("Start")
 				on_hurt(Global.boss.thunder_ap)
 				
 			if area.is_in_group("SP"):
 				if Global.LPS_wand != null:
 					health -= int(Global.LPS_wand.SP_ap)
-					blink_anim.play("Start")
 					on_hurt(Global.LPS_wand.SP_ap)
 				
 			if area.is_in_group("DragonBall"):
 				health -= int(Global.field_boss.dragonBall_ap)
-				blink_anim.play("Start")
 				on_hurt(Global.field_boss.dragonBall_ap)
 				
 			if area.is_in_group("Duggie"):
-				health -= int(area.get_parent().ap)
-				blink_anim.play("Start")
-				on_hurt(area.get_parent().ap)
+				if invincible == false:
+					health -= int(area.get_parent().ap)
+					on_hurt(area.get_parent().ap)
+					start_invincible(0.5)
 				
 			state = states.HURT
 
@@ -633,3 +649,13 @@ func on_transitioned():
 	SceneChanger.goto_scene("res://level/GameOver.tscn", get_parent().get_parent())
 
 
+func _on_InvincibleTimer_timeout():
+	self.invincible = false
+
+
+func _on_Player_invincible_started():
+	$HurtBox.set_deferred("monitoring", false)
+
+
+func _on_Player_invincible_ended():
+	$HurtBox.monitoring = true

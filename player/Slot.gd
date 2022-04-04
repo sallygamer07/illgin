@@ -84,6 +84,16 @@ func use_item(using_item, slot, is_hotbar : bool = false):
 				elif item_name == "고양이 발바닥 부적":
 					use_item_add_stat(item_name, slot)
 					
+				elif item_name == "나무 궤짝":
+					PlayerInventory.place_obj = true
+					PlayerInventory.place_slot = slot
+					PlayerInventory.place_name = item_name\
+					
+				elif item_name == "제작대":
+					PlayerInventory.place_obj = true
+					PlayerInventory.place_slot = slot
+					PlayerInventory.place_name = item_name
+					
 			else:
 				PlayerInventory.remove_item(slot)
 				erase_used_item(item)
@@ -101,6 +111,16 @@ func use_item(using_item, slot, is_hotbar : bool = false):
 				
 				elif item_name == "고양이 발바닥 부적":
 					use_item_add_stat(item_name, slot, is_hotbar)
+					
+				elif item_name == "나무 궤짝":
+					PlayerInventory.place_obj = true
+					PlayerInventory.place_slot = slot
+					PlayerInventory.place_name = item_name
+					
+				elif item_name == "제작대":
+					PlayerInventory.place_obj = true
+					PlayerInventory.place_slot = slot
+					PlayerInventory.place_name = item_name
 					
 			else:
 				PlayerInventory.remove_item(slot)

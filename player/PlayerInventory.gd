@@ -16,6 +16,10 @@ var hotbar = {}
 
 var active_item_slot = 0
 
+var place_obj = false
+var place_slot
+var place_name = ""
+
 
 func get_item(item_name : String):
 	for item in inventory:
