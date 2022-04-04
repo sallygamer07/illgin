@@ -1,6 +1,6 @@
 # READ ME
 
-(graghics 파일 업로드하기)
+(update project.godot)
 
 It is an Action RPG.
 
