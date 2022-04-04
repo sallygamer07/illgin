@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://DefaultTheme.tres" type="Theme" id=1]
 [ext_resource path="res://graphics/font/joystix.tres" type="DynamicFont" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://graphics/font/stardust.tres" type="DynamicFont" id=21]
 [ext_resource path="res://UI/WeaponShopUI.tscn" type="PackedScene" id=22]
 [ext_resource path="res://player/CollectItemLabel.tscn" type="PackedScene" id=23]
+[ext_resource path="res://UI/MiniMap.tscn" type="PackedScene" id=24]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.556863 )
@@ -249,8 +250,8 @@ margin_left = -55.0
 margin_top = -15.0
 margin_right = 51.0
 margin_bottom = 17.0
-custom_colors/font_color = Color( 1, 0.752941, 0.752941, 1 )
 custom_fonts/font = ExtResource( 21 )
+custom_colors/font_color = Color( 1, 0.752941, 0.752941, 1 )
 text = "10/100"
 align = 1
 valign = 1
@@ -276,8 +277,8 @@ margin_left = -54.0
 margin_top = -14.0
 margin_right = 52.0
 margin_bottom = 18.0
-custom_colors/font_color = Color( 0.509804, 0.701961, 1, 1 )
 custom_fonts/font = ExtResource( 21 )
+custom_colors/font_color = Color( 0.509804, 0.701961, 1, 1 )
 text = "10/100"
 align = 1
 valign = 1
@@ -551,11 +552,17 @@ margin_bottom = 1.0
 
 [node name="CollectItemLabel" parent="." instance=ExtResource( 23 )]
 
+[node name="HotBar" parent="." instance=ExtResource( 17 )]
+position = Vector2( 520, 528 )
+
 [node name="Inventory" parent="." instance=ExtResource( 8 )]
 visible = false
 
-[node name="HotBar" parent="." instance=ExtResource( 17 )]
-position = Vector2( 520, 528 )
+[node name="MiniMap" parent="." instance=ExtResource( 24 )]
+margin_left = 878.465
+margin_top = 88.0
+margin_right = 992.465
+margin_bottom = 202.0
 
 [node name="Shops" type="Control" parent="."]
 visible = false

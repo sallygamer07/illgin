@@ -3,6 +3,7 @@ extends Control
 
 onready var charcter_sheet = preload("res://UI/CharacterSheet.tscn")
 onready var map = preload("res://UI/Map.tscn")
+onready var crafting = preload("res://UI/CraftingSystem.tscn")
 
 onready var HPbar = $HealthBar
 onready var HPLabel = $HealthBar/Label
@@ -19,6 +20,7 @@ var selecting_item = null
 
 var character_sheet_visible = false
 var map_visible = false
+var crafting_visible = false
 
 
 func _ready():
@@ -57,9 +59,6 @@ func _process(_delta):
 		if Global.player != null:
 			if Global.player.health <= 0:
 				self.hide()
-		
-		
-		
 	
 	
 func initialize(current, maximum):
@@ -142,6 +141,7 @@ func _input(event):
 			if get_node_or_null("Map"):
 				var m = get_node("Map")
 				m.queue_free()
+				
 		
 	if event.is_action_pressed("CharacterSheet"):
 		character_sheet_visible = !character_sheet_visible
@@ -153,6 +153,20 @@ func _input(event):
 			if get_node_or_null("CharacterSheet"):
 				var cha = get_node("CharacterSheet")
 				cha.queue_free()
+				
+	if Global.crafting_table == true:
+		if event.is_action_pressed("interect"):
+			crafting_visible = !crafting_visible
+			if crafting_visible == true:
+				var crafting_instance = crafting.instance()
+				add_child(crafting_instance)
+				move_child(crafting_instance, 20)
+				Global.active = true
+			if crafting_visible == false:
+				if get_node_or_null("CraftingSystem"):
+					var c = get_node("CraftingSystem")
+					c.queue_free()
+					Global.active = false
 		
 	if event.is_action_pressed("scroll_up"):
 		PlayerInventory.active_item_scroll_down()
@@ -161,9 +175,9 @@ func _input(event):
 		PlayerInventory.active_item_scroll_up()
 
 func set_skill_lock():
-	if $Inventory.visible == false or $SkillTree.visible == false or $QuestTree.visible == false or character_sheet_visible == false or $Shops.visible == false or map_visible == false:
+	if $Inventory.visible == false or $SkillTree.visible == false or $QuestTree.visible == false or character_sheet_visible == false or $Shops.visible == false or map_visible == false or crafting_visible == false:
 		player_unlock()
-	if $Inventory.visible == true or $SkillTree.visible == true or $QuestTree.visible == true or character_sheet_visible == true or $Shops.visible == true or map_visible == true:
+	if $Inventory.visible == true or $SkillTree.visible == true or $QuestTree.visible == true or character_sheet_visible == true or $Shops.visible == true or map_visible == true or crafting_visible == true:
 		player_lock()
 
 
@@ -233,5 +247,4 @@ func show_skillbar():
 	$Bg3.visible = Global.player_wand.skill_2A
 	$Bg4.visible = Global.player_wand.skill_2B
 	$Bg5.visible = Global.player_wand.skill_2C
-
 
