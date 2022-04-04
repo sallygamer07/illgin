@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://object/stub.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Details.tres" type="TileSet" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://UI/PortaltoVilageText.tscn" type="PackedScene" id=20]
 [ext_resource path="res://object/DryStick.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Mobs/Duggie.tscn" type="PackedScene" id=22]
+[ext_resource path="res://object/NormalSword.tscn" type="PackedScene" id=23]
+[ext_resource path="res://object/CraftingTable.tscn" type="PackedScene" id=24]
 [ext_resource path="res://object/EasyBow.tscn" type="PackedScene" id=25]
 [ext_resource path="res://object/Portal_toLevel.tscn" type="PackedScene" id=26]
 [ext_resource path="res://OutSideTileSet.tres" type="TileSet" id=27]
@@ -168,6 +170,9 @@ sceneToMove = "res://level/Level_3.tscn"
 
 [node name="Objects" type="YSort" parent="YSort"]
 
+[node name="CraftingTable" parent="YSort/Objects" instance=ExtResource( 24 )]
+position = Vector2( 1248, 1608 )
+
 [node name="DryStick" parent="YSort" instance=ExtResource( 21 )]
 position = Vector2( 1744, 1304 )
 
@@ -185,6 +190,9 @@ position = Vector2( 522, 1632 )
 
 [node name="Chest_item" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 1038.83, 1768 )
+
+[node name="NormalSword" parent="YSort" instance=ExtResource( 23 )]
+position = Vector2( 1134.26, 1232 )
 
 [node name="vilage_1Pos" type="Position2D" parent="."]
 position = Vector2( 1592, 300.935 )
