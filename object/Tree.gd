@@ -4,6 +4,7 @@ class_name tree
 onready var area : Area2D = get_node("Object/Area2D")
 onready var wooden = preload("res://object/Wooden.tscn")
 onready var anim : AnimationPlayer = get_node("AnimationPlayer")
+onready var audio : AudioStreamPlayer = get_node("AudioStreamPlayer")
 
 var knockback_direction = Vector2.ZERO
 var knockback_force = 0
@@ -27,5 +28,6 @@ func _process(_delta):
 func on_area_entered(_area):
 	if _area.is_in_group("PlayerWeapon"):
 		crash_num += 1
+		audio.play()
 		anim.play("Shake")
 	
