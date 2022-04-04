@@ -9,11 +9,13 @@ var deg_for_arrow
 var bow_ap = 7
 var attack_timer
 var bow_rate = 1.2
+var left_arrow
 
 
 func _ready():
 	Global.player_bow = self
 	attack_timer = get_tree().create_timer(0.0)
+			
 
 func set_damage_bow(skill_ap):
 	if skill_ap != null:
@@ -24,6 +26,8 @@ func set_damage_bow(skill_ap):
 func _process(_delta):
 	look_at(get_global_mouse_position())
 #	print(skill_1A, skill_1B, skill_2A, skill_2B, skill_2C)
+	left_arrow = PlayerInventory.get_item("화살")
+	#print(left_arrow)
 	
 	if Input.is_action_pressed("attack"):
 		var _timer = Timer.new()
@@ -39,13 +43,16 @@ func Attack():
 		deg_for_arrow = mouse_pos.angle_to_point(global_position)
 		look_at(mouse_pos)
 		
-
-		if attack_timer.time_left <= 0.0:
-			set_damage_bow(bow_ap)
-			var arrow_instance = arrow.instance()
-			arrow_instance.position.x = Global.player.position.x
-			arrow_instance.position.y = Global.player.position.y
-			arrow_instance.rotation_degrees = rotation_degrees
-			get_tree().get_root().add_child(arrow_instance)
-			attack_timer = get_tree().create_timer(bow_rate)
-			yield(attack_timer, "timeout")
+		if left_arrow != null:
+			if left_arrow > 0:
+				if attack_timer.time_left <= 0.0:
+					set_damage_bow(bow_ap)
+					var arrow_instance = arrow.instance()
+					arrow_instance.position.x = Global.player.position.x
+					arrow_instance.position.y = Global.player.position.y
+					arrow_instance.rotation_degrees = rotation_degrees
+					get_tree().get_root().add_child(arrow_instance)
+					PlayerInventory.remove_item_quest("화살", 1)
+					get_node("../../../CanvasLayer/UI/HotBar").initialize_hotbar()
+					attack_timer = get_tree().create_timer(bow_rate)
+					yield(attack_timer, "timeout")
