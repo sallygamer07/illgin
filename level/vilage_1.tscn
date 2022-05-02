@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/Camera.tscn" type="PackedScene" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://object/House_2.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Mobs/DogCat.tscn" type="PackedScene" id=30]
 [ext_resource path="res://object/Libaray_house.tscn" type="PackedScene" id=31]
+[ext_resource path="res://fenceTileset.tres" type="TileSet" id=32]
 
 [node name="vilage_1" type="Node2D"]
 script = ExtResource( 3 )
@@ -83,6 +84,13 @@ position = Vector2( -1600, -1600 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="Fence" type="TileMap" parent="YSort"]
+tile_set = ExtResource( 32 )
+cell_size = Vector2( 32, 32 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( -589841, 0, 0, -589840, 1, 0, -589839, 0, 0, -589838, 1, 0, -589837, 0, 0, -589836, 1, 0, -589835, 0, 0, -589834, 1, 0, -589833, 0, 0 )
 
 [node name="Trees" type="YSort" parent="YSort"]
 
@@ -428,6 +436,11 @@ position = Vector2( -1320, 1552 )
 scale = Vector2( -1, 1 )
 sceneToMove = "res://level/Cave_1.tscn"
 
+[node name="Portal_toCave2" parent="YSort/Portals" instance=ExtResource( 22 )]
+position = Vector2( 1056, 1184 )
+scale = Vector2( -1, 1 )
+sceneToMove = "res://level/dungeon.tscn"
+
 [node name="Shops" type="YSort" parent="YSort"]
 
 [node name="PotionShop" parent="YSort/Shops" instance=ExtResource( 23 )]
@@ -462,6 +475,9 @@ position = Vector2( 128, -1336 )
 
 [node name="Cave_1Pos" type="Position2D" parent="."]
 position = Vector2( -1312, 1360 )
+
+[node name="dungeonPos" type="Position2D" parent="."]
+position = Vector2( 982.465, 1186.32 )
 
 [node name="Inside_1Pos" type="Position2D" parent="."]
 position = Vector2( 550, 408 )
