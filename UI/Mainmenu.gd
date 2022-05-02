@@ -1,5 +1,9 @@
 extends Control
 
+#Ingr label tscn
+#wooden texture
+#minimap icon
+#crafting table (object) tscn
 
 func _ready():
 	Global.loaded = -1
